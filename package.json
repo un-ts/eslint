@@ -1,6 +1,7 @@
 {
   "name": "@rxts/eslint",
   "version": "0.0.0",
+  "description": "Incredible ESLint plugins, make ESLint greater.",
   "repository": "git+https://github.com/rx-ts/eslint.git",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
@@ -71,7 +72,8 @@
       "@1stg"
     ]
   },
-  "type-coverage": {
+  "typeCoverage": {
+    "atLeast": 100,
     "detail": true,
     "strict": true,
     "update": true
