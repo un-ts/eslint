@@ -1,12 +1,12 @@
 import { Linter } from 'eslint'
 
-export interface MarkupParserOptions extends Linter.ParserOptions {
+export interface HtmlParserOptions extends Linter.ParserOptions {
   filePath?: string
 }
 
 export const parseForESLint = (
   text: string,
-  _options?: MarkupParserOptions,
+  _options?: HtmlParserOptions,
 ): Linter.ESLintParseResult => {
   const lines = text.split('\n')
   return {
@@ -32,5 +32,5 @@ export const parseForESLint = (
 }
 
 /* istanbul ignore next */
-export const parse = (text: string, options?: MarkupParserOptions) =>
+export const parse = (text: string, options?: HtmlParserOptions) =>
   parseForESLint(text, options).ast

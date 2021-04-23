@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@rxts/eslint-plugin-html": ["packages/html/src"],
       "eslint-plugin-markup": ["packages/markup/src"]
     }
   }
