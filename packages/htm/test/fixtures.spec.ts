@@ -2,21 +2,21 @@ import path from 'path'
 
 import { ESLint } from 'eslint'
 
-import * as ESLintPluginHtml from '@rxts/eslint-plugin-html'
+import * as ESLintPluginHtm from 'eslint-plugin-htm'
 
 const eslint = new ESLint({
   useEslintrc: false,
   plugins: {
-    '@rxts/html': ESLintPluginHtml,
+    htm: ESLintPluginHtm,
   },
   overrideConfig: {
     overrides: [
       {
         files: '*.html',
-        parser: '@rxts/eslint-plugin-html',
-        plugins: ['@rxts/html'],
+        parser: 'eslint-plugin-htm',
+        plugins: ['htm'],
         rules: {
-          '@rxts/html/html': 2,
+          'htm/html': 2,
         },
       },
     ],

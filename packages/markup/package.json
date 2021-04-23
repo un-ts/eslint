@@ -22,6 +22,7 @@
   "keywords": [
     "eslint",
     "eslint-plugin",
+    "eslint-plugin-htm",
     "eslint-plugin-html",
     "markuplint",
     "htmllint",

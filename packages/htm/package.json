@@ -1,9 +1,9 @@
 {
-  "name": "@rxts/eslint-plugin-html",
+  "name": "eslint-plugin-htm",
   "version": "0.0.0",
   "description": "An incredible ESLint plugin for HTML based on HTMLHint.",
   "repository": "git+https://github.com/rx-ts/eslint.git",
-  "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/html",
+  "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/htm",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
   "private": true,
@@ -22,6 +22,7 @@
   "keywords": [
     "eslint",
     "eslint-plugin",
+    "eslint-plugin-htm",
     "eslint-plugin-html",
     "markuplint",
     "htmllint",

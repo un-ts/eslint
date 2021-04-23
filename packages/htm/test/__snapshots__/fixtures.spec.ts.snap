@@ -7,7 +7,7 @@ Array [
     "line": 1,
     "message": "Doctype must be declared first.",
     "nodeType": null,
-    "ruleId": "@rxts/html/html",
+    "ruleId": "htm/html",
     "severity": 2,
   },
 ]
