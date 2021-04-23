@@ -6,7 +6,6 @@
   "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/markup",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
-  "private": true,
   "engines": {
     "node": ">=10"
   },
