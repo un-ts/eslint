@@ -37,6 +37,18 @@
     "typescript": "^4.2.4",
     "yarn-deduplicate": "^3.1.0"
   },
+  "commitlint": {
+    "extends": "@1stg"
+  },
+  "eslintConfig": {
+    "extends": "@1stg"
+  },
+  "eslintIgnore": [
+    "coverage",
+    "lib",
+    "test/fixtures",
+    "CHANGELOG.md"
+  ],
   "jest": {
     "preset": "ts-jest",
     "collectCoverage": true,
@@ -46,6 +58,17 @@
     },
     "modulePathIgnorePatterns": [
       "<rootDir>/package.json"
+    ]
+  },
+  "prettier": "@1stg/prettier-config",
+  "remarkConfig": {
+    "plugins": [
+      "@1stg/remark-config"
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "@1stg"
     ]
   },
   "type-coverage": {
