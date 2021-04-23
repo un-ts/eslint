@@ -1,0 +1,33 @@
+{
+  "name": "@rxts/eslint",
+  "version": "0.0.0",
+  "repository": "git+https://github.com/rx-ts/eslint.git",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "run-p build:*",
+    "build:r": "r -f esm,es2015",
+    "build:tsc": "tsc -b",
+    "clean": "rimraf packages/*/{lib,*.tsbuildinfo}",
+    "lint": "run-p lint:*",
+    "lint:es": "eslint . --cache -f friendly --max-warnings 10",
+    "postinstall": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0",
+    "test": "jest --force-exit"
+  },
+  "devDependencies": {
+    "@1stg/lib-config": "^1.2.10",
+    "@types/eslint": "^7.2.10",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.41",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.5",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4",
+    "yarn-deduplicate": "^3.1.0"
+  }
+}

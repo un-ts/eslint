@@ -1,0 +1,44 @@
+{
+  "name": "eslint-plugin-markup",
+  "version": "0.0.0",
+  "description": "An incredible ESLint plugin for all markup languages based on markuplint.",
+  "repository": "git+https://github.com/rx-ts/eslint.git",
+  "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/markup",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "lib",
+  "module": "lib/esm",
+  "es2015": "lib/es2015",
+  "fesm5": "lib/esm",
+  "types": "lib",
+  "files": [
+    "lib",
+    "!*.tsbuildinfo"
+  ],
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "eslint-plugin-html",
+    "markuplint",
+    "htmllint",
+    "htmlhint",
+    "html-lint",
+    "html-hint",
+    "linthtml"
+  ],
+  "peerDependencies": {
+    "eslint": ">=5.0.0"
+  },
+  "dependencies": {
+    "markuplint": "^1.6.1",
+    "tslib": "^2.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}
