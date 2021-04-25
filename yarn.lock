@@ -1968,16 +1968,16 @@
   integrity sha512-aUhOB6ypvMEFZVTiIImt6Dwfn0Lbxi7o4deSbLTaKxn6cHnAWLXfVr1D3kfIkRL5NeiLFhdZKhlQ/a9vaCGABg==
 
 "@pkgr/rollup@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@pkgr/rollup/-/rollup-0.12.0.tgz#7129f375dd8f4ebc3c689368e44406d07a034528"
-  integrity sha512-ooqF1ZNDxkR1lwMUYt+aTIC2hXQf8Y+uex5nvwLJ7Z9kVxk3VL9uQeoIVXlw55r6n4h/ED1Qrry6eOEUA8gSFQ==
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@pkgr/rollup/-/rollup-0.12.1.tgz#a8880b9eb934b275a4769bed1efe19b9d5805d6e"
+  integrity sha512-iVDwqIyaiKA9l2FR4g2+j/w/ij7tBpwD4S8Vdkd6JlmIYnL7+yx8kDrD4wID6Lfnb4CdQOsD3fFLB0JzilO6FQ==
   dependencies:
     "@babel/plugin-transform-runtime" "^7.13.15"
     "@babel/preset-env" "^7.13.15"
     "@pkgr/es-modules" "^0.4.0"
     "@pkgr/named-exports" "^0.5.2"
     "@pkgr/umd-globals" "^0.6.0"
-    "@pkgr/utils" "^0.7.0"
+    "@pkgr/utils" "^0.7.1"
     "@rollup/plugin-babel" "^5.2.0"
     "@rollup/plugin-commonjs" "^18.0.0"
     "@rollup/plugin-json" "^4.0.3"
@@ -2005,15 +2005,15 @@
   resolved "https://registry.yarnpkg.com/@pkgr/umd-globals/-/umd-globals-0.6.0.tgz#7a98fcff2f9ab5dfe19b32db981de87074973263"
   integrity sha512-8ZOGRFVHwqftYkr4ntGhEmePLLyWKrhgk/hncF/6czH3YUwJsERQ0UL7NPhBLqO04AZve2Sw7xXGksHHL460SA==
 
-"@pkgr/utils@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-0.7.0.tgz#fbcf201e093e5fb37582c98e147403d8c03c939f"
-  integrity sha512-IMQ2cMBwUDTIKWOY1LRqbIuVoLoPd/UhwWS/CSuPtisqPuRBVg/u09UwFsxMzV55d5Ojx6wAwvjuKH2uNCFCSA==
+"@pkgr/utils@^0.7.0", "@pkgr/utils@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@pkgr/utils/-/utils-0.7.1.tgz#2f4c20fd68bfe6e795fb3c9fc181fd13dde975a3"
+  integrity sha512-pNT46/B1Wl8uoFRAlOLwfSMGMfsEix6L33zmP/Hz//9QvXdmGvGhduKWIQE3XH5NtwLyzitptEhBSNH/ixib1A==
   dependencies:
     chalk "^4.0.0"
     cross-spawn "^7.0.2"
     is-glob "^4.0.1"
-    open "^8.0.6"
+    open "^7.4.2"
     tiny-glob "^0.2.6"
     tslib "^2.2.0"
 
@@ -2321,6 +2321,11 @@
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
   integrity sha512-FvUupuM3rlRsRtCN+fDudtmytGO6iHJuuRKS1Ss0pG5z8oX0diNEw94UEL7hgDbpN94rgaK5R7sWm6RrSkZuAQ==
+
+"@types/uuid@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.0.tgz#215c231dff736d5ba92410e6d602050cce7e273f"
+  integrity sha512-eQ9qFW/fhfGJF8WKHGEHZEyVWfZxrT+6CLIJGBcZPfxUh/+BnEj+UCGYMlr9qZuX/2AltsvwrGqp0LhEW8D0zQ==
 
 "@types/yargs-parser@*":
   version "20.2.0"
@@ -3879,11 +3884,6 @@ defaults@^1.0.3:
   integrity sha1-xlYFHpgX2f8I7YgUd/P+QBnz730=
   dependencies:
     clone "^1.0.2"
-
-define-lazy-prop@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz#3f7ae421129bcaaac9bc74905c98a0009ec9ee7f"
-  integrity sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og==
 
 define-properties@^1.1.3:
   version "1.1.3"
@@ -5537,7 +5537,7 @@ is-directory@^0.3.1:
   resolved "https://registry.yarnpkg.com/is-directory/-/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
   integrity sha1-YTObbyR1/Hcv2cnYP1yFddwVSuE=
 
-is-docker@^2.0.0, is-docker@^2.1.1:
+is-docker@^2.0.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.2.1.tgz#33eeabe23cfe86f14bde4408a02c0cfb853acdaa"
   integrity sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==
@@ -5766,7 +5766,7 @@ is-word-character@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-word-character/-/is-word-character-1.0.4.tgz#ce0e73216f98599060592f62ff31354ddbeb0230"
   integrity sha512-5SMO8RVennx3nZrqtKwCGyyetPE9VDba5ugvKLaD4KopPG5kR4mQ7tNt/r7feL5yt5h3lpuBbIUmCOG2eSzXHA==
 
-is-wsl@^2.2.0:
+is-wsl@^2.1.1, is-wsl@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-2.2.0.tgz#74a4c76e77ca9fd3f932f290c17ea326cd157271"
   integrity sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww==
@@ -7226,14 +7226,13 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^8.0.6:
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/open/-/open-8.0.6.tgz#bdf94a80b4ef5685d8c7b58fb0fbbe5729b37204"
-  integrity sha512-vDOC0KwGabMPFtIpCO2QOnQeOz0N2rEkbuCuxICwLMUCrpv+A7NHrrzJ2dQReJmVluHhO4pYRh/Pn6s8t7Op6Q==
+open@^7.4.2:
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/open/-/open-7.4.2.tgz#b8147e26dcf3e426316c730089fd71edd29c2321"
+  integrity sha512-MVHddDVweXZF3awtlAS+6pgKLlm/JgxZ90+/NBurBoQctVOOB/zDdVjcyPzQ+0laDGbsWgrRkflI65sQeOgT9Q==
   dependencies:
-    define-lazy-prop "^2.0.0"
-    is-docker "^2.1.1"
-    is-wsl "^2.2.0"
+    is-docker "^2.0.0"
+    is-wsl "^2.1.1"
 
 optionator@^0.8.1:
   version "0.8.3"

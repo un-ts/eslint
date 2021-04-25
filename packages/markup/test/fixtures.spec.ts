@@ -25,7 +25,7 @@ const eslint = new ESLint({
 
 test('fixtures', async () => {
   const results = await eslint.lintFiles(
-    path.resolve(__dirname, './fixtures/*.html'),
+    path.resolve(__dirname, 'fixtures/*.html'),
   )
   for (const { filePath, messages } of results) {
     expect(messages).toMatchSnapshot(path.basename(filePath))

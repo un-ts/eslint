@@ -1,15 +1,63 @@
+import path from 'path'
+
 import { Rule } from 'eslint'
+import { exec } from 'markuplint'
+
+import { createSyncFn, getPhysicalFilename, resolveConfig } from '../helpers'
+import { Sync } from '../types'
+
+const execSync = createSyncFn<Sync<typeof exec>>(
+  path.resolve(__dirname, '../worker'),
+)
 
 export const markup: Rule.RuleModule = {
   meta: {
     fixable: 'code',
     type: 'problem',
   },
-  create() {
+  create(context) {
+    const filename = context.getFilename()
+    const { text } = context.getSourceCode()
     return {
       // eslint-disable-next-line sonar/function-name
       Program() {
-        // no sync API available temporarily
+        const runMarkuplint = (fix?: boolean) =>
+          execSync({
+            sourceCodes: text,
+            names: filename,
+            config: resolveConfig(getPhysicalFilename(filename)),
+            fix,
+          })
+
+        let fixed = 0
+
+        const resultInfos = runMarkuplint()
+
+        if (resultInfos.length === 0) {
+          return
+        }
+
+        for (const { message, line, col } of resultInfos[0].results) {
+          context.report({
+            message,
+            loc: {
+              line,
+              column: col,
+            },
+            fix() {
+              if (fixed++) {
+                return null
+              }
+              const { fixedCode } = runMarkuplint(true)[0]
+              return text === fixedCode
+                ? null
+                : {
+                    range: [0, text.length],
+                    text: fixedCode,
+                  }
+            },
+          })
+        }
       },
     }
   },
