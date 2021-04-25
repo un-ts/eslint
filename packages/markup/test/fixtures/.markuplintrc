@@ -1,5 +1,7 @@
 {
   "rules": {
-    "doctype": true
+    "attr-spacing": true,
+    "doctype": true,
+    "attr-equal-space-after": "never"
   }
 }
