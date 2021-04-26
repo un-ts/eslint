@@ -1,14 +1,11 @@
-import path from 'path'
-
 import { Rule } from 'eslint'
 import { exec } from 'markuplint'
+import { createSyncFn } from 'synckit'
 
-import { createSyncFn, getPhysicalFilename, resolveConfig } from '../helpers'
+import { getPhysicalFilename, resolveConfig } from '../helpers'
 import { Sync } from '../types'
 
-const execSync = createSyncFn<Sync<typeof exec>>(
-  path.resolve(__dirname, '../worker'),
-)
+const execSync = createSyncFn(require.resolve('../worker')) as Sync<typeof exec>
 
 export const markup: Rule.RuleModule = {
   meta: {
