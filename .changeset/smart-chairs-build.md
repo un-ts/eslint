@@ -2,4 +2,4 @@
 "eslint-plugin-markup": minor
 ---
 
-feat: use synckit to simplify
+feat: use [`synckit`](https://github.com/rx-ts/synckit) to simplify
