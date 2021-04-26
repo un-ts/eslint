@@ -1,5 +1,11 @@
 # eslint-plugin-markup
 
+## 0.3.1
+
+### Patch Changes
+
+- [#7](https://github.com/rx-ts/eslint/pull/7) [`2927d23`](https://github.com/rx-ts/eslint/commit/2927d23eb674aa8af56400fc80637a4297754641) Thanks [@JounQin](https://github.com/JounQin)! - fix: bump synckit for better types
+
 ## 0.3.0
 
 ### Minor Changes
