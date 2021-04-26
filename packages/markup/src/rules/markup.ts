@@ -3,9 +3,8 @@ import { exec } from 'markuplint'
 import { createSyncFn } from 'synckit'
 
 import { getPhysicalFilename, resolveConfig } from '../helpers'
-import { Sync } from '../types'
 
-const execSync = createSyncFn(require.resolve('../worker')) as Sync<typeof exec>
+const execSync = createSyncFn<typeof exec>(require.resolve('../worker'))
 
 export const markup: Rule.RuleModule = {
   meta: {
