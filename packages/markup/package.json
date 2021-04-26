@@ -37,7 +37,7 @@
   "dependencies": {
     "cosmiconfig": "^7.0.0",
     "markuplint": "^1.6.1",
-    "synckit": "^0.1.0",
+    "synckit": "^0.1.5",
     "tslib": "^2.2.0"
   },
   "publishConfig": {
