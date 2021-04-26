@@ -1,5 +1,11 @@
 # eslint-plugin-markup
 
+## 0.3.0
+
+### Minor Changes
+
+- [#5](https://github.com/rx-ts/eslint/pull/5) [`2bb9c39`](https://github.com/rx-ts/eslint/commit/2bb9c39ddab1000791a5030eb435a0702c015854) Thanks [@JounQin](https://github.com/JounQin)! - feat: use [`synckit`](https://github.com/rx-ts/synckit) to simplify
+
 ## 0.2.0
 
 ### Minor Changes
