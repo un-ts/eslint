@@ -75,7 +75,9 @@
   },
   "typeCoverage": {
     "atLeast": 100,
+    "cache": true,
     "detail": true,
+    "ignoreCatch": true,
     "strict": true,
     "update": true
   }
