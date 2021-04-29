@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "cosmiconfig": "^7.0.0",
-    "markuplint": "^1.6.1",
+    "markuplint": "^1.7.0-alpha.5+c47a79f",
+    "markuplint-sync": "^0.1.1",
     "synckit": "^0.1.5",
     "tslib": "^2.2.0"
   },
