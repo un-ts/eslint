@@ -27,7 +27,5 @@ export const getPhysicalFilename = (filename: string): string => {
 
 const explorer = cosmiconfigSync('markuplint')
 
-export const resolveConfig = (filename: string) => {
-  const result = explorer.search(filename)
-  return result ? result.filepath : undefined
-}
+export const resolveConfig = (filename: string) =>
+  explorer.search(filename)?.filepath

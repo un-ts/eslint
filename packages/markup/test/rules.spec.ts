@@ -27,15 +27,28 @@ tester.run('markup', markup, {
         </html>`,
     },
     {
-      code: '',
+      ...options,
+      code: '<header>Header1</header>',
     },
     {
-      code: '',
+      ...options,
+      code: '<header>Header2</header>',
       filename: path.join(__filename, '0_fake_virtual_filename.html'),
     },
     {
-      code: '',
+      ...options,
+      code: '<header>Header3</header>',
       filename: path.join(__dirname),
+    },
+    {
+      ...options,
+      code: '<header>Header4</header>',
+      filename: path.join(__dirname, 'fake.html'),
+    },
+    {
+      ...options,
+      code: '<header>Header5</header>',
+      filename: path.join(__dirname, 'fixtures/textlint/test.html'),
     },
   ],
   invalid: [
@@ -55,6 +68,20 @@ tester.run('markup', markup, {
           message: 'Required doctype',
           line: 1,
           column: 2,
+        },
+      ],
+    },
+    {
+      ...options,
+      code: '<p>a,c,d,e,f,g</p>',
+      filename: path.join(__dirname, 'fixtures/textlint/test.html'),
+      errors: [
+        {
+          message:
+            'Invalid text: This sentence exceeds the maximum count of comma. Maximum is 4.',
+          // FIXME: https://github.com/markuplint/markuplint/issues/160
+          line: 2,
+          column: 11,
         },
       ],
     },
