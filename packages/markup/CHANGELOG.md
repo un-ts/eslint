@@ -1,5 +1,11 @@
 # eslint-plugin-markup
 
+## 0.4.0
+
+### Minor Changes
+
+- [#9](https://github.com/rx-ts/eslint/pull/9) [`62b23ed`](https://github.com/rx-ts/eslint/commit/62b23ed0f90bd6bce4286099eec8c886ded7ff0e) Thanks [@JounQin](https://github.com/JounQin)! - feat: integrate with markuplint-sync
+
 ## 0.3.1
 
 ### Patch Changes
