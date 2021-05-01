@@ -31,7 +31,7 @@
     "linthtml"
   ],
   "peerDependencies": {
-    "eslint": ">=5.0.0"
+    "eslint": ">=5.16.0"
   },
   "dependencies": {
     "htmlhint": "^0.14.2",
