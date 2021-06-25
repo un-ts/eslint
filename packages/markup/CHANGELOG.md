@@ -1,5 +1,11 @@
 # eslint-plugin-markup
 
+## 0.5.0
+
+### Minor Changes
+
+- [#20](https://github.com/rx-ts/eslint/pull/20) [`47b79a4`](https://github.com/rx-ts/eslint/commit/47b79a41cd2e328b3cfde5a7a03126197c8dd083) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump all (dev)Dependencies
+
 ## 0.4.0
 
 ### Minor Changes
