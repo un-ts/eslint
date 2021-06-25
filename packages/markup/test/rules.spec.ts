@@ -79,8 +79,7 @@ tester.run('markup', markup, {
         {
           message:
             'Invalid text: This sentence exceeds the maximum count of comma. Maximum is 4.',
-          // FIXME: https://github.com/markuplint/markuplint/issues/160
-          line: 2,
+          line: 1,
           column: 11,
         },
       ],

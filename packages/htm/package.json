@@ -34,8 +34,8 @@
     "eslint": ">=5.0.0"
   },
   "dependencies": {
-    "htmlhint": "^0.14.2",
-    "tslib": "^2.2.0"
+    "htmlhint": "^0.15.1",
+    "tslib": "^2.3.0"
   },
   "publishConfig": {
     "access": "public"

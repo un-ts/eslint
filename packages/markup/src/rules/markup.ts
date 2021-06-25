@@ -9,7 +9,8 @@ const execSync = createSyncFn<typeof execAsync>(require.resolve('../worker'))
 
 const brokenCache = new Map<string, true>()
 
-const BROKEN_ERROR_PATTERN = /^`(verify|fix)Sync` finished async. Use `\1` instead$/
+const BROKEN_ERROR_PATTERN =
+  /^`(verify|fix)Sync` finished async. Use `\1` instead$/
 
 export const markup: Rule.RuleModule = {
   meta: {
@@ -29,7 +30,7 @@ export const markup: Rule.RuleModule = {
     }
 
     return {
-      // eslint-disable-next-line sonarjs/cognitive-complexity, sonar/function-name
+      // eslint-disable-next-line sonarjs/cognitive-complexity
       Program() {
         if (!config) {
           return
