@@ -9,7 +9,6 @@ export const html: Rule.RuleModule = {
     const sourceCode = context.getSourceCode().text
 
     return {
-      // eslint-disable-next-line sonar/function-name
       Program() {
         const results = HTMLHint.verify(sourceCode)
         for (const result of results) {
