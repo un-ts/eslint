@@ -2,6 +2,9 @@
   "extends": "./tsconfig.base",
   "references": [
     {
+      "path": "packages/utils"
+    },
+    {
       "path": "packages/htm"
     },
     {

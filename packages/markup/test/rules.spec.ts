@@ -65,7 +65,11 @@ tester.run('markup', markup, {
       </html>`,
       errors: [
         {
-          message: 'Required doctype',
+          message: JSON.stringify({
+            severity: 'error',
+            message: 'Required doctype',
+            ruleId: 'doctype',
+          }),
           line: 1,
           column: 2,
         },
@@ -77,8 +81,12 @@ tester.run('markup', markup, {
       filename: path.join(__dirname, 'fixtures/textlint/test.html'),
       errors: [
         {
-          message:
-            'Invalid text: This sentence exceeds the maximum count of comma. Maximum is 4.',
+          message: JSON.stringify({
+            severity: 'warning',
+            message:
+              'Invalid text: This sentence exceeds the maximum count of comma. Maximum is 4.',
+            ruleId: 'textlint',
+          }),
           line: 1,
           column: 11,
         },

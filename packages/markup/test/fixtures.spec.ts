@@ -2,22 +2,14 @@ import path from 'path'
 
 import { ESLint } from 'eslint'
 
-import * as ESLintPluginMarkup from 'eslint-plugin-markup'
-
 const eslint = new ESLint({
   useEslintrc: false,
-  plugins: {
-    markup: ESLintPluginMarkup,
-  },
+  ignore: false,
   overrideConfig: {
     overrides: [
       {
         files: '*.html',
-        parser: 'eslint-plugin-markup',
-        plugins: ['markup'],
-        rules: {
-          'markup/markup': 2,
-        },
+        extends: 'plugin:markup/recommended',
       },
     ],
   },

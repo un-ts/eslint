@@ -12,7 +12,7 @@
   "scripts": {
     "build": "run-p build:*",
     "build:r": "r -f esm,es2015",
-    "build:tsc": "tsc -b",
+    "build:ts": "tsc -b",
     "clean": "rimraf packages/*/{lib,*.tsbuildinfo}",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly --max-warnings 10",
@@ -47,16 +47,17 @@
   },
   "eslintIgnore": [
     "coverage",
-    "lib",
-    "test/fixtures",
-    "CHANGELOG.md"
+    "**/lib",
+    "**/test/fixtures",
+    "**/CHANGELOG.md"
   ],
   "jest": {
     "preset": "ts-jest",
     "collectCoverage": true,
     "moduleNameMapper": {
       "eslint-plugin-htm": "<rootDir>/packages/htm/src",
-      "eslint-plugin-markup": "<rootDir>/packages/markup/src"
+      "eslint-plugin-markup": "<rootDir>/packages/markup/src",
+      "eslint-plugin-utils": "<rootDir>/packages/utils/src"
     },
     "modulePathIgnorePatterns": [
       "<rootDir>/package.json"
@@ -74,10 +75,12 @@
     ]
   },
   "typeCoverage": {
-    "atLeast": 100,
+    "atLeast": 99.6,
     "cache": true,
     "detail": true,
+    "ignoreAsAssertion": true,
     "ignoreCatch": true,
+    "ignoreNonNullAssertion": true,
     "strict": true,
     "update": true
   }
