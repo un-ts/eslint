@@ -5,10 +5,12 @@ Array [
   Object {
     "column": 2,
     "line": 1,
-    "message": "Doctype must be declared first.",
+    "message": "Doctype must be declared first.
+evidence: <!--comment--><!DOCTYPE html>
+reference: https://github.com/thedaviddias/HTMLHint/wiki/doctype-first",
     "nodeType": null,
-    "ruleId": "htm/html",
-    "severity": 2,
+    "ruleId": "htm/doctype-first",
+    "severity": 1,
   },
 ]
 `;

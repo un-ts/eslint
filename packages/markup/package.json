@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "cosmiconfig": "^7.0.0",
+    "eslint-plugin-utils": "^0.0.0",
     "markuplint": "^1.9.1",
     "markuplint-sync": "^0.3.1",
     "synckit": "^0.1.5",
@@ -44,5 +45,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": false
+  "sideEffects": [
+    "./lib/es*.js",
+    "./lib/index.js"
+  ]
 }

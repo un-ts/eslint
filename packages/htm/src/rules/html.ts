@@ -11,12 +11,12 @@ export const html: Rule.RuleModule = {
     return {
       Program() {
         const results = HTMLHint.verify(sourceCode)
-        for (const result of results) {
+        for (const { evidence, message, line, col, rule } of results) {
           context.report({
-            message: result.message,
+            message: JSON.stringify({ evidence, message, rule }),
             loc: {
-              line: result.line,
-              column: result.col,
+              line,
+              column: col,
             },
           })
         }

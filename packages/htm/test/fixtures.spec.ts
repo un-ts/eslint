@@ -2,22 +2,14 @@ import path from 'path'
 
 import { ESLint } from 'eslint'
 
-import * as ESLintPluginHtm from 'eslint-plugin-htm'
-
 const eslint = new ESLint({
   useEslintrc: false,
-  plugins: {
-    htm: ESLintPluginHtm,
-  },
+  ignore: false,
   overrideConfig: {
     overrides: [
       {
         files: '*.html',
-        parser: 'eslint-plugin-htm',
-        plugins: ['htm'],
-        rules: {
-          'htm/html': 2,
-        },
+        extends: 'plugin:htm/recommended',
       },
     ],
   },

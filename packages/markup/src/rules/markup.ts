@@ -71,9 +71,10 @@ export const markup: Rule.RuleModule = {
 
         let fixed = 0
 
-        for (const { message, line, col } of resultInfos[0].results) {
+        for (const { ruleId, severity, message, line, col } of resultInfos[0]
+          .results) {
           context.report({
-            message,
+            message: JSON.stringify({ severity, message, ruleId }),
             loc: {
               line,
               column: col,

@@ -1,0 +1,33 @@
+{
+  "name": "eslint-plugin-utils",
+  "version": "0.0.0",
+  "description": "Utilities for ESLint plugins and custom rules.",
+  "repository": "git+https://github.com/rx-ts/eslint.git",
+  "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/utils",
+  "author": "JounQin <admin@1stg.me>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "lib",
+  "module": "lib/esm",
+  "es2015": "lib/es2015",
+  "fesm5": "lib/esm",
+  "types": "lib",
+  "files": [
+    "lib",
+    "!*.tsbuildinfo"
+  ],
+  "keywords": [
+    "eslint",
+    "eslint-utils",
+    "eslint-plugin-utils"
+  ],
+  "peerDependencies": {
+    "eslint": ">=5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

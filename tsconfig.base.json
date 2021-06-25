@@ -1,10 +1,12 @@
 {
-  "extends": "./node_modules/@1stg/tsconfig/node",
+  // used by ESLint
+  "extends": "./tsconfig.lib",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "eslint-plugin-htm": ["packages/htm/src"],
-      "eslint-plugin-markup": ["packages/markup/src"]
+      "eslint-plugin-markup": ["packages/markup/src"],
+      "eslint-plugin-utils": ["packages/utils/src"]
     }
   }
 }
