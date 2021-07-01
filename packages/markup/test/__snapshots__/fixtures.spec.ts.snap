@@ -3,7 +3,7 @@
 exports[`fixtures: attr-equal-space-after.html 1`] = `
 Array [
   Object {
-    "column": 10,
+    "column": 9,
     "fix": Object {
       "range": Array [
         0,
@@ -25,7 +25,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 10,
+    "column": 9,
     "line": 2,
     "message": "Never insert space after equal sign of attribute",
     "nodeType": null,
@@ -33,7 +33,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 9,
+    "column": 8,
     "line": 4,
     "message": "Never insert space after equal sign of attribute",
     "nodeType": null,
@@ -41,7 +41,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 9,
+    "column": 8,
     "line": 7,
     "message": "Never insert space after equal sign of attribute",
     "nodeType": null,
@@ -54,7 +54,7 @@ Array [
 exports[`fixtures: attr-spacing.html 1`] = `
 Array [
   Object {
-    "column": 20,
+    "column": 19,
     "fix": Object {
       "range": Array [
         0,
@@ -75,7 +75,7 @@ Array [
 exports[`fixtures: combine.html 1`] = `
 Array [
   Object {
-    "column": 10,
+    "column": 9,
     "fix": Object {
       "range": Array [
         0,
@@ -99,7 +99,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 10,
+    "column": 9,
     "line": 2,
     "message": "Never insert space after equal sign of attribute",
     "nodeType": null,
@@ -107,7 +107,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 9,
+    "column": 8,
     "line": 4,
     "message": "Never insert space after equal sign of attribute",
     "nodeType": null,
@@ -115,7 +115,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 9,
+    "column": 8,
     "line": 7,
     "message": "Never insert space after equal sign of attribute",
     "nodeType": null,
@@ -123,7 +123,7 @@ Array [
     "severity": 1,
   },
   Object {
-    "column": 20,
+    "column": 19,
     "line": 11,
     "message": "Required space",
     "nodeType": null,
@@ -136,7 +136,7 @@ Array [
 exports[`fixtures: doctype.html 1`] = `
 Array [
   Object {
-    "column": 2,
+    "column": 1,
     "line": 1,
     "message": "Required doctype",
     "nodeType": null,

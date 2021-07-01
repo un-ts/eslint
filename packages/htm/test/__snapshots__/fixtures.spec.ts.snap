@@ -3,7 +3,7 @@
 exports[`fixtures: basic.html 1`] = `
 Array [
   Object {
-    "column": 2,
+    "column": 1,
     "line": 1,
     "message": "Doctype must be declared first.
 evidence: <!--comment--><!DOCTYPE html>

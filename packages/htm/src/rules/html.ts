@@ -16,7 +16,8 @@ export const html: Rule.RuleModule = {
             message: JSON.stringify({ evidence, message, rule }),
             loc: {
               line,
-              column: col,
+              // ! eslint ast column is 0-indexed, but htmlhint is 1-indexed
+              column: col - 1,
             },
           })
         }

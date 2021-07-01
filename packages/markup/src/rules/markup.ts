@@ -77,7 +77,8 @@ export const markup: Rule.RuleModule = {
             message: JSON.stringify({ severity, message, ruleId }),
             loc: {
               line,
-              column: col,
+              // ! eslint ast column is 0-indexed, but markuplint is 1-indexed
+              column: col - 1,
             },
             fix() {
               if (fixed++) {
