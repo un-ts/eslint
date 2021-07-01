@@ -1,5 +1,11 @@
 # eslint-plugin-htm
 
+## 0.3.1
+
+### Patch Changes
+
+- [`c8ff9fe`](https://github.com/rx-ts/eslint/commit/c8ff9fea0addc71cc0053a84cf6e8bc54900322c) Thanks [@JounQin](https://github.com/JounQin)! - fix: eslint column is 0-indexed
+
 ## 0.3.0
 
 ### Minor Changes
