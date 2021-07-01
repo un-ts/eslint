@@ -31,7 +31,7 @@
     "linthtml"
   ],
   "peerDependencies": {
-    "eslint": ">=5.0.0"
+    "eslint": ">=7.29.0"
   },
   "dependencies": {
     "eslint-plugin-utils": "^0.1.0",
