@@ -1,5 +1,15 @@
 # eslint-plugin-markup
 
+## 0.7.0
+
+### Minor Changes
+
+- [#32](https://github.com/rx-ts/eslint/pull/32) [`7d5dfce`](https://github.com/rx-ts/eslint/commit/7d5dfcefa8a813682d428d563e689e3d91344581) Thanks [@JounQin](https://github.com/JounQin)! - feat: call `creatSyncFn` lazily for performance
+
+### Patch Changes
+
+- [#29](https://github.com/rx-ts/eslint/pull/29) [`c7e7bd8`](https://github.com/rx-ts/eslint/commit/c7e7bd80746345219c3c14cc296910308b33c38c) Thanks [@JounQin](https://github.com/JounQin)! - feat(markup): upgrade synckit which is much faster now
+
 ## 0.6.1
 
 ### Patch Changes
