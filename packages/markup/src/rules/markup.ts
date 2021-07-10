@@ -5,7 +5,12 @@ import { createSyncFn } from 'synckit'
 
 import { getPhysicalFilename, resolveConfig } from '../helpers'
 
-const execSync = createSyncFn<typeof execAsync>(require.resolve('../worker'))
+// call `creatSyncFn` lazily for performance, it is already cached inside, related #31
+const _ = {
+  get execSync() {
+    return createSyncFn<typeof execAsync>(require.resolve('../worker'))
+  },
+}
 
 const brokenCache = new Map<string, true>()
 
@@ -45,7 +50,7 @@ export const markup: Rule.RuleModule = {
           }
 
           if (broken) {
-            return execSync(options)
+            return _.execSync(options)
           }
 
           try {
@@ -54,7 +59,7 @@ export const markup: Rule.RuleModule = {
             /* istanbul ignore else */
             if (BROKEN_ERROR_PATTERN.test((err as Error).message)) {
               brokenCache.set(config, (broken = true))
-              return execSync(options)
+              return _.execSync(options)
             }
             // eslint-disable-next-line no-else-return -- https://github.com/istanbuljs/istanbuljs/issues/605
             else {
