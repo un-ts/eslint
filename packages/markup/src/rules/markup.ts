@@ -5,10 +5,12 @@ import { createSyncFn } from 'synckit'
 
 import { getPhysicalFilename, resolveConfig } from '../helpers'
 
+const workerPath = require.resolve('../worker')
+
 // call `creatSyncFn` lazily for performance, it is already cached inside, related #31
 const _ = {
   get execSync() {
-    return createSyncFn<typeof execAsync>(require.resolve('../worker'))
+    return createSyncFn<typeof execAsync>(workerPath)
   },
 }
 
