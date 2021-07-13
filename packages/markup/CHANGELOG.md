@@ -1,5 +1,11 @@
 # eslint-plugin-markup
 
+## 0.7.1
+
+### Patch Changes
+
+- [#33](https://github.com/rx-ts/eslint/pull/33) [`8f00e33`](https://github.com/rx-ts/eslint/commit/8f00e33dd66cb777264454f17197a984d922b75c) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps): upgrade synckit v0.3.0
+
 ## 0.7.0
 
 ### Minor Changes
