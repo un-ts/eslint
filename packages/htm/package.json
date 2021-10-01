@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "eslint-plugin-utils": "^0.1.0",
-    "htmlhint": "^0.15.1",
+    "htmlhint": "^0.15.2",
     "tslib": "^2.3.0"
   },
   "publishConfig": {
