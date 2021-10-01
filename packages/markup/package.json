@@ -40,7 +40,7 @@
     "markuplint": "^1.11.4",
     "markuplint-sync": "^0.3.2",
     "synckit": "^0.3.4",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.1"
   },
   "publishConfig": {
     "access": "public"
