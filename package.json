@@ -26,7 +26,7 @@
     "@1stg/lib-config": "^3.0.0",
     "@changesets/changelog-github": "^0.4.3",
     "@changesets/cli": "^2.21.0",
-    "@markuplint/rule-textlint": "^0.2.0-alpha.1",
+    "@markuplint/rule-textlint": "^0.2.0",
     "@types/eslint": "^7.29.0",
     "@types/htmlhint": "^0.9.3",
     "@types/jest": "^26.0.24",
