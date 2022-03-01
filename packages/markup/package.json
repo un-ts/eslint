@@ -38,7 +38,7 @@
     "cosmiconfig": "^7.0.1",
     "eslint-plugin-utils": "^0.1.0",
     "markuplint": "^1.11.4",
-    "markuplint-sync": "^0.3.2",
+    "markuplint-sync": "^0.3.3",
     "synckit": "^0.3.4",
     "tslib": "^2.3.1"
   },

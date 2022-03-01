@@ -5506,6 +5506,18 @@ glob@7.1.7, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glo
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+glob@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
+  integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 global-dirs@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/global-dirs/-/global-dirs-0.1.1.tgz#b319c0dd4607f353f3be9cca4c72fc148c49f445"
@@ -7239,6 +7251,25 @@ markuplint-sync@^0.3.2:
     minimatch "^3.0.4"
     os-locale "^5.0.0"
     tslib "^2.3.0"
+
+markuplint-sync@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/markuplint-sync/-/markuplint-sync-0.3.3.tgz#b48b49be6bc1314f268068977c96a598c1482e44"
+  integrity sha512-AaeynH1WJ8sUcMx5jntxJpysEXQAjKkF5hhBqvpiZnwR6VAdKIYAkBPZrdUv62nPcH7gpjEMsaiYL8pO+3n5Og==
+  dependencies:
+    "@markuplint/file-resolver" "^1.5.0"
+    "@markuplint/html-spec" "^1.8.2"
+    "@markuplint/i18n" "^1.2.0"
+    "@markuplint/ml-ast" "^1.6.0"
+    "@markuplint/ml-config" "^1.3.0"
+    "@markuplint/ml-core" "^1.9.0"
+    "@markuplint/ml-spec" "^1.7.0"
+    cosmiconfig "^7.0.1"
+    glob "^7.2.0"
+    markuplint "^1.11.4"
+    minimatch "^3.0.4"
+    os-locale "^5.0.0"
+    tslib "^2.3.1"
 
 markuplint@^1.10.0:
   version "1.10.1"
