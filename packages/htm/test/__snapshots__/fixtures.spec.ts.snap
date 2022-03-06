@@ -7,7 +7,7 @@ Array [
     "line": 1,
     "message": "Doctype must be declared first.
 evidence: <!--comment--><!DOCTYPE html>
-reference: https://github.com/thedaviddias/HTMLHint/wiki/doctype-first",
+reference: https://htmlhint.com/docs/user-guide/rules/doctype-first",
     "nodeType": null,
     "ruleId": "htm/doctype-first",
     "severity": 1,

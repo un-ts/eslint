@@ -138,7 +138,7 @@ Array [
   Object {
     "column": 1,
     "line": 1,
-    "message": "Required doctype",
+    "message": "Require doctype",
     "nodeType": null,
     "ruleId": "markup/doctype",
     "severity": 2,

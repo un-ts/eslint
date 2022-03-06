@@ -10,9 +10,9 @@
     "node": ">=10"
   },
   "main": "lib",
-  "module": "lib/esm",
-  "es2015": "lib/es2015",
-  "fesm5": "lib/esm",
+  "module": "lib/esm.mjs",
+  "es2015": "lib/es2015.mjs",
+  "fesm5": "lib/esm.mjs",
   "types": "lib",
   "files": [
     "lib",
@@ -35,12 +35,11 @@
     "eslint": ">=5.0.0"
   },
   "dependencies": {
-    "cosmiconfig": "^7.0.0",
+    "cosmiconfig": "^7.0.1",
     "eslint-plugin-utils": "^0.1.0",
-    "markuplint": "^1.10.1",
-    "markuplint-sync": "^0.3.2",
-    "synckit": "^0.3.4",
-    "tslib": "^2.3.0"
+    "markuplint": "^2.2.0",
+    "synckit": "^0.6.0",
+    "tslib": "^2.3.1"
   },
   "publishConfig": {
     "access": "public"

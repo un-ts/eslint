@@ -1,16 +1,13 @@
 import { registerJsonMessageHandler } from 'eslint-plugin-utils'
-import { LintResult } from 'htmlhint'
+import { Hint } from 'htmlhint/types'
 
-export * from './parser'
 export * as configs from './configs'
+export * from './parser'
 export * as rules from './rules'
 
-registerJsonMessageHandler(
-  'htm/html',
-  ({ evidence, rule, message }: LintResult) => ({
-    ruleId: `htm/${rule.id}`,
-    message: `${message}
+registerJsonMessageHandler('htm/html', ({ evidence, rule, message }: Hint) => ({
+  ruleId: `htm/${rule.id}`,
+  message: `${message}
 evidence: ${evidence}
-reference: ${rule.link}`,
-  }),
-)
+reference: ${rule.link ?? '-'}`,
+}))

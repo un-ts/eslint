@@ -10,9 +10,9 @@
     "node": ">=10"
   },
   "main": "lib",
-  "module": "lib/esm",
-  "es2015": "lib/es2015",
-  "fesm5": "lib/esm",
+  "module": "lib/esm.mjs",
+  "es2015": "lib/es2015.mjs",
+  "fesm5": "lib/esm.mjs",
   "types": "lib",
   "files": [
     "lib",

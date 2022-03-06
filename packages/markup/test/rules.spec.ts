@@ -15,7 +15,8 @@ tester.run('markup', markup, {
   valid: [
     {
       ...options,
-      code: /* HTML */ `<!DOCTYPE html>
+      code: /* HTML */ `
+        <!DOCTYPE html>
         <html>
           <head>
             <title>Any Page</title>
@@ -24,7 +25,8 @@ tester.run('markup', markup, {
             <h1>Any Page</h1>
             <p>Anonymous</p>
           </body>
-        </html>`,
+        </html>
+      `,
     },
     {
       ...options,
@@ -54,20 +56,22 @@ tester.run('markup', markup, {
   invalid: [
     {
       ...options,
-      code: /* HTML */ `<html>
-        <head>
-          <title>Any Page</title>
-        </head>
-        <body>
-          <h1>Any Page</h1>
-          <p>Anonymous</p>
-        </body>
-      </html>`,
+      code: /* HTML */ `
+        <html>
+          <head>
+            <title>Any Page</title>
+          </head>
+          <body>
+            <h1>Any Page</h1>
+            <p>Anonymous</p>
+          </body>
+        </html>
+      `,
       errors: [
         {
           message: JSON.stringify({
             severity: 'error',
-            message: 'Required doctype',
+            message: 'Require doctype',
             ruleId: 'doctype',
           }),
           line: 1,
