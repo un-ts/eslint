@@ -1,5 +1,16 @@
 # eslint-plugin-markup
 
+## 0.8.0
+
+### Minor Changes
+
+- [`a2c68dd`](https://github.com/rx-ts/eslint/commit/a2c68dd7ac4ff9b67b0cb1f371a008cf359dae19) Thanks [@JounQin](https://github.com/JounQin)! - feat: upgrade markuplint 2.0
+
+### Patch Changes
+
+- Updated dependencies [[`a2c68dd`](https://github.com/rx-ts/eslint/commit/a2c68dd7ac4ff9b67b0cb1f371a008cf359dae19)]:
+  - eslint-plugin-utils@0.2.0
+
 ## 0.7.1
 
 ### Patch Changes
