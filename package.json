@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@1stg/lib-config": "^5.0.0",
-    "@changesets/changelog-github": "^0.4.3",
+    "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.21.1",
     "@markuplint/rule-textlint": "^2.2.0",
     "@types/eslint": "^8.4.1",
