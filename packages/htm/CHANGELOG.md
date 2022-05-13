@@ -1,5 +1,16 @@
 # eslint-plugin-htm
 
+## 0.5.0
+
+### Minor Changes
+
+- [`2616f9d`](https://github.com/rx-ts/eslint/commit/2616f9dbf3fc81935f987907e56fa5af3f9266d3) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps)!: bump all (dev)Dependencies, use exports field
+
+### Patch Changes
+
+- Updated dependencies [[`2616f9d`](https://github.com/rx-ts/eslint/commit/2616f9dbf3fc81935f987907e56fa5af3f9266d3)]:
+  - eslint-plugin-utils@0.3.0
+
 ## 0.4.0
 
 ### Minor Changes

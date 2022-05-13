@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-markup",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "An incredible ESLint plugin for all markup languages based on markuplint.",
   "repository": "git+https://github.com/rx-ts/eslint.git",
   "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/markup",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "cosmiconfig": "^7.0.1",
-    "eslint-plugin-utils": "^0.2.0",
+    "eslint-plugin-utils": "^0.3.0",
     "markuplint": "^2.7.1",
     "synckit": "^0.7.1",
     "tslib": "^2.4.0"
