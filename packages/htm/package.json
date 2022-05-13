@@ -9,11 +9,15 @@
   "engines": {
     "node": ">=10"
   },
-  "main": "lib",
-  "module": "lib/esm.mjs",
-  "es2015": "lib/es2015.mjs",
-  "fesm5": "lib/esm.mjs",
-  "types": "lib",
+  "main": "./lib/index.js",
+  "module": "./lib/index.es2015.mjs",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.es2015.mjs",
+    "require": "./lib/index.js"
+  },
+  "es2015": "./lib/index.es2015.mjs",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib",
     "!*.tsbuildinfo"
@@ -35,8 +39,8 @@
   },
   "dependencies": {
     "eslint-plugin-utils": "^0.2.0",
-    "htmlhint": "^1.1.2",
-    "tslib": "^2.3.1"
+    "htmlhint": "^1.1.4",
+    "tslib": "^2.4.0"
   },
   "publishConfig": {
     "access": "public"

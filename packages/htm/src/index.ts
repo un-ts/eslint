@@ -9,5 +9,8 @@ registerJsonMessageHandler('htm/html', ({ evidence, rule, message }: Hint) => ({
   ruleId: `htm/${rule.id}`,
   message: `${message}
 evidence: ${evidence}
-reference: ${rule.link ?? '-'}`,
+reference: ${
+    // istanbul ignore next
+    rule.link ?? '-'
+  }`,
 }))
