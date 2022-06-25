@@ -1,7 +1,6 @@
 import path from 'node:path'
 
 import { RuleTester } from 'eslint'
-
 import { markup } from 'eslint-plugin-markup'
 
 const tester = new RuleTester()
