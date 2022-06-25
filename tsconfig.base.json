@@ -6,6 +6,7 @@
     "paths": {
       "eslint-plugin-htm": ["packages/htm/src"],
       "eslint-plugin-markup": ["packages/markup/src"],
+      "eslint-plugin-react-enhanced": ["packages/react-enhanced/src"],
       "eslint-plugin-utils": ["packages/utils/src"]
     }
   }

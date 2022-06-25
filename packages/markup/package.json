@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-markup",
   "version": "0.9.0",
-  "description": "An incredible ESLint plugin for all markup languages based on markuplint.",
+  "description": "An incredible ESLint plugin for all markup languages based on markuplint",
   "repository": "git+https://github.com/rx-ts/eslint.git",
   "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/markup",
   "author": "JounQin <admin@1stg.me>",
@@ -19,8 +19,7 @@
   "es2015": "./lib/index.es2015.mjs",
   "types": "./lib/index.d.ts",
   "files": [
-    "lib",
-    "!*.tsbuildinfo"
+    "lib"
   ],
   "keywords": [
     "eslint",

@@ -1,11 +1,12 @@
 {
-  "name": "eslint-plugin-htm",
-  "version": "0.5.0",
-  "description": "An incredible ESLint plugin for HTML based on HTMLHint",
+  "name": "eslint-plugin-react-enhanced",
+  "version": "0.0.0",
+  "description": "An incredible ESLint plugin for @react-enhanced",
   "repository": "git+https://github.com/rx-ts/eslint.git",
-  "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/htm",
+  "homepage": "https://github.com/rx-ts/eslint/blob/main/packages/react-enhanced",
   "author": "JounQin <admin@1stg.me>",
   "license": "MIT",
+  "packageManager": "yarn@1.22.19",
   "engines": {
     "node": ">=10"
   },
@@ -24,28 +25,19 @@
   "keywords": [
     "eslint",
     "eslint-plugin",
-    "eslint-plugin-htm",
-    "eslint-plugin-html",
-    "markuplint",
-    "htmllint",
-    "htmlhint",
-    "html-lint",
-    "html-hint",
-    "linthtml"
+    "eslint-plugin-react",
+    "eslint-plugin-react-enhanced",
+    "react",
+    "react-enhanced"
   ],
   "peerDependencies": {
     "eslint": ">=5.0.0"
   },
   "dependencies": {
-    "eslint-plugin-utils": "^0.3.0",
-    "htmlhint": "^1.1.4",
     "tslib": "^2.4.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "sideEffects": [
-    "./lib/es*.js",
-    "./lib/index.js"
-  ]
+  "sideEffects": false
 }

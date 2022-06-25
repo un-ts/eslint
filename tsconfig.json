@@ -9,6 +9,9 @@
     },
     {
       "path": "packages/markup"
+    },
+    {
+      "path": "packages/react-enhanced"
     }
   ],
   "ts-node": {
