@@ -25,6 +25,22 @@ This repository is a monorepo managed by [changesets][] what means we actually p
 | [`eslint-plugin-react-enhanced`](/packages/react-enhanced) | An incredible ESLint plugin for @react-enhanced                          | [![npm](https://img.shields.io/npm/v/eslint-plugin-react-enhanced.svg)](https://www.npmjs.com/package/eslint-plugin-react-enhanced) [![View changelog](https://img.shields.io/badge/changelog-explore-brightgreen)](https://changelogs.xyz/eslint-plugin-react-enhanced) |
 | [`eslint-plugin-utils`](/packages/utils)                   | Utilities for ESLint plugins and custom rules                            | [![npm](https://img.shields.io/npm/v/eslint-plugin-utils.svg)](https://www.npmjs.com/package/eslint-plugin-utils) [![View changelog](https://img.shields.io/badge/changelog-explore-brightgreen)](https://changelogs.xyz/eslint-plugin-utils)                            |
 
+## Sponsors
+
+| 1stG                                                                                                                               | RxTS                                                                                                                               | UnTS                                                                                                                               |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| [![1stG Open Collective backers and sponsors](https://opencollective.com/1stG/organizations.svg)](https://opencollective.com/1stG) | [![RxTS Open Collective backers and sponsors](https://opencollective.com/rxts/organizations.svg)](https://opencollective.com/rxts) | [![UnTS Open Collective backers and sponsors](https://opencollective.com/unts/organizations.svg)](https://opencollective.com/unts) |
+
+## Backers
+
+| 1stG                                                                                                                             | RxTS                                                                                                                             | UnTS                                                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [![1stG Open Collective backers and sponsors](https://opencollective.com/1stG/individuals.svg)](https://opencollective.com/1stG) | [![RxTS Open Collective backers and sponsors](https://opencollective.com/rxts/individuals.svg)](https://opencollective.com/rxts) | [![UnTS Open Collective backers and sponsors](https://opencollective.com/unts/individuals.svg)](https://opencollective.com/unts) |
+
+## Changelog
+
+Detailed changes for each release are documented in [CHANGELOG.md](./CHANGELOG.md).
+
 ## License
 
 [MIT][] © [JounQin][]@[1stG.me][]
