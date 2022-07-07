@@ -1,5 +1,12 @@
 # eslint-plugin-htm
 
+## 0.5.1
+
+### Patch Changes
+
+- [#73](https://github.com/un-ts/eslint/pull/73) [`3516221`](https://github.com/un-ts/eslint/commit/3516221792f305a99cea28f0d2c81cce3adfba23) Thanks [@JounQin](https://github.com/JounQin)! - - chore: migrate to unts org
+  - chore: add donate field, bump deps
+
 ## 0.5.0
 
 ### Minor Changes
