@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-htm",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "An incredible ESLint plugin for HTML based on HTMLHint",
   "repository": "git+https://github.com/un-ts/eslint.git",
   "homepage": "https://github.com/un-ts/eslint/blob/main/packages/htm",
