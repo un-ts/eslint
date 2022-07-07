@@ -2,6 +2,8 @@
 .*cache
 *.tsbuildinfo
 .type-coverage
+.vercel
 coverage
+dist
 lib
 node_modules

@@ -1,9 +1,9 @@
 {
-  "name": "@rxts/eslint",
+  "name": "@unts/eslint",
   "version": "0.0.0",
-  "description": "Incredible ESLint plugins, make ESLint greater.",
-  "repository": "git+https://github.com/rx-ts/eslint.git",
-  "author": "JounQin <admin@1stg.me>",
+  "description": "Incredible ESLint plugins, make ESLint greater",
+  "repository": "git+https://github.com/un-ts/eslint.git",
+  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
   "license": "MIT",
   "private": true,
   "workspaces": [
@@ -14,28 +14,44 @@
     "build:r": "r -f es2015",
     "build:ts": "tsc -b",
     "clean": "rimraf packages/*/{lib,*.tsbuildinfo}",
+    "dev": "yarn docs:dev",
+    "docs:build": "w -e docs -p --publicPath /",
+    "docs:dev": "w -e docs --publicPath /",
+    "docs:preview": "sirv dist",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly --max-warnings 10",
     "lint:ts": "tsc -p tsconfig.base.json --noEmit",
     "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0",
     "prerelease": "yarn build",
     "release": "changeset publish",
+    "serve": "yarn docs:preview",
     "test": "jest",
-    "typecov": "type-coverage"
+    "typecov": "type-coverage",
+    "vercel-build": "yarn docs:build"
   },
   "devDependencies": {
-    "@1stg/lib-config": "^6.3.0",
+    "@1stg/lib-config": "^7.2.6",
     "@changesets/changelog-github": "^0.4.5",
     "@changesets/cli": "^2.23.0",
-    "@markuplint/rule-textlint": "^2.5.2",
-    "@types/eslint": "^8.4.3",
+    "@markuplint/rule-textlint": "^2.5.3",
+    "@pkgr/webpack": "^3.1.2",
+    "@pkgr/webpack-mdx": "^2.0.3",
+    "@types/eslint": "^8.4.5",
     "@types/htmlhint": "^1.1.2",
-    "@types/jest": "^28.1.3",
-    "@types/node": "^18.0.0",
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/web": "^0.0.69",
+    "github-markdown-css": "^5.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "sirv-cli": "^2.0.2",
     "textlint-rule-max-comma": "^2.0.2",
     "ts-jest": "^28.0.5",
-    "ts-node": "^10.8.1",
-    "type-coverage": "^2.21.1",
+    "ts-node": "^10.8.2",
+    "type-coverage": "^2.21.2",
     "typescript": "^4.7.4"
   },
   "commitlint": {
@@ -43,13 +59,23 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": "@1stg"
+    "extends": "@1stg",
+    "overrides": [
+      {
+        "files": "docs/**/*.tsx",
+        "rules": {
+          "react/react-in-jsx-scope": "off"
+        }
+      }
+    ]
   },
   "eslintIgnore": [
     "coverage",
+    "dist",
     "**/lib",
     "**/test/fixtures",
-    "**/CHANGELOG.md"
+    "**/CHANGELOG.md",
+    "!/.*.js"
   ],
   "jest": {
     "preset": "ts-jest",
