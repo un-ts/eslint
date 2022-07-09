@@ -6,7 +6,7 @@ import {
   useParams,
 } from 'react-router-dom'
 
-import './global.css'
+import './global.scss'
 import 'github-markdown-css'
 
 const Readme = () => {

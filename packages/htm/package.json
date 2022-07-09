@@ -69,7 +69,7 @@
     "eslint": ">=5.0.0"
   },
   "dependencies": {
-    "eslint-plugin-utils": "^0.3.0",
+    "eslint-plugin-utils": "^0.3.1",
     "htmlhint": "^1.1.4",
     "tslib": "^2.4.0"
   },

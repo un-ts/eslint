@@ -10,6 +10,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "build": "run-p build:*",
     "build:r": "r -f es2015",
@@ -21,6 +22,7 @@
     "docs:preview": "sirv dist",
     "lint": "run-p lint:*",
     "lint:es": "eslint . --cache -f friendly --max-warnings 10",
+    "lint:style": "stylelint . --cache",
     "lint:ts": "tsc -p tsconfig.base.json --noEmit",
     "prepare": "simple-git-hooks && yarn-deduplicate --strategy fewer || exit 0",
     "release": "changeset publish",
@@ -30,9 +32,10 @@
     "vercel-build": "yarn docs:build"
   },
   "devDependencies": {
-    "@1stg/lib-config": "^7.2.6",
+    "@1stg/app-config": "^6.0.0",
+    "@1stg/lib-config": "^8.0.0",
     "@changesets/changelog-github": "^0.4.5",
-    "@changesets/cli": "^2.23.0",
+    "@changesets/cli": "^2.23.1",
     "@markuplint/rule-textlint": "^2.5.3",
     "@pkgr/webpack": "^3.1.2",
     "@pkgr/webpack-mdx": "^2.0.3",
@@ -52,7 +55,8 @@
     "ts-jest": "^28.0.5",
     "ts-node": "^10.8.2",
     "type-coverage": "^2.21.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "yarn-deduplicate": "^5.0.0"
   },
   "commitlint": {
     "extends": "@1stg"
