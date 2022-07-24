@@ -1,5 +1,11 @@
 # eslint-plugin-markup
 
+## 0.10.1
+
+### Patch Changes
+
+- [#75](https://github.com/un-ts/eslint/pull/75) [`5c0ce7b`](https://github.com/un-ts/eslint/commit/5c0ce7bac6393edf3118b242f485e9ad8d0aa3f3) Thanks [@JounQin](https://github.com/JounQin)! - chore(deps): bump `synckit`
+
 ## 0.10.0
 
 ### Minor Changes
