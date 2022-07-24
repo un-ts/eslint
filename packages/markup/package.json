@@ -71,8 +71,8 @@
   "dependencies": {
     "cosmiconfig": "^7.0.1",
     "eslint-plugin-utils": "^0.3.1",
-    "markuplint": "^2.9.0",
-    "synckit": "^0.7.2",
+    "markuplint": "^2.10.0",
+    "synckit": "^0.8.1",
     "tslib": "^2.4.0"
   },
   "publishConfig": {
