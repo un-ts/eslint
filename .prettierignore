@@ -1,1 +1,3 @@
-**/test/fixtures
+coverage
+dist
+/packages/**/test/fixtures
