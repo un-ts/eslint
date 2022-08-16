@@ -40,7 +40,7 @@
   "license": "MIT",
   "packageManager": "yarn@1.22.19",
   "engines": {
-    "node": ">=10"
+    "node": ">=v16.17.0"
   },
   "main": "./lib/index.js",
   "module": "./lib/index.es2015.mjs",
