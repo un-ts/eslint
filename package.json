@@ -39,7 +39,7 @@
     "@markuplint/rule-textlint": "^2.5.4",
     "@pkgr/webpack": "^3.2.0",
     "@pkgr/webpack-mdx": "^2.0.3",
-    "@types/eslint": "^8.4.5",
+    "@types/eslint": "^8.4.6",
     "@types/htmlhint": "^1.1.2",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.3",

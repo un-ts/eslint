@@ -63,7 +63,7 @@
     "react-enhanced"
   ],
   "peerDependencies": {
-    "eslint": ">=5.0.0"
+    "eslint": ">=8.22.0"
   },
   "dependencies": {
     "tslib": "^2.4.0"
