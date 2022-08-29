@@ -12,6 +12,9 @@
     },
     {
       "path": "packages/react-enhanced"
+    },
+    {
+      "path": "packages/text"
     }
   ],
   "ts-node": {

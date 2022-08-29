@@ -1,9 +1,9 @@
 {
-  "name": "eslint-plugin-htm",
-  "version": "0.5.1",
-  "description": "An incredible ESLint plugin for HTML based on HTMLHint",
+  "name": "eslint-plugin-text",
+  "version": "0.0.0",
+  "description": "An incredible ESLint plugin for retext or textlint",
   "repository": "git+https://github.com/un-ts/eslint.git",
-  "homepage": "https://github.com/un-ts/eslint/blob/main/packages/htm",
+  "homepage": "https://github.com/un-ts/eslint/blob/main/packages/text",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
@@ -25,22 +25,27 @@
   "keywords": [
     "eslint",
     "eslint-plugin",
-    "eslint-plugin-htm",
-    "eslint-plugin-html",
-    "markuplint",
-    "htmllint",
-    "htmlhint",
-    "html-lint",
-    "html-hint",
-    "linthtml"
+    "eslint-plugin-text",
+    "retext",
+    "textlint",
+    "spell",
+    "spellcheck",
+    "spelling",
+    "spelling-check"
   ],
   "peerDependencies": {
     "eslint": ">=5.0.0"
   },
   "dependencies": {
+    "cosmiconfig": "^7.0.1",
     "eslint-plugin-utils": "^0.3.1",
-    "htmlhint": "^1.1.4",
-    "tslib": "^2.4.0"
+    "retext-stringify": "^3.1.0",
+    "synckit": "^0.8.1",
+    "textlint": "^12.2.1",
+    "tslib": "^2.4.0",
+    "unified": "^10.1.2",
+    "vfile": "^5.3.4",
+    "vfile-message": "^3.1.2"
   },
   "publishConfig": {
     "access": "public"

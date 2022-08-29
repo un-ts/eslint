@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fixtures: basic.html 1`] = `
-Array [
-  Object {
+[
+  {
     "column": 1,
     "line": 1,
     "message": "Doctype must be declared first.
