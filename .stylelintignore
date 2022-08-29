@@ -8,5 +8,6 @@ LICENSE
 *.pug
 *.snap
 *.tsbuildinfo
+*.txt
 *.yaml
 *.yml

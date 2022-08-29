@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fixtures: attr-equal-space-after.html 1`] = `
-Array [
-  Object {
+[
+  {
     "column": 9,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         0,
         106,
       ],
-      "text": "<img src=\\"path/to\\">
-<img src =\\"path/to\\">
+      "text": "<img src="path/to">
+<img src ="path/to">
 <img
-    src=\\"path/to\\">
+    src="path/to">
 <img
     src
-    =\\"path/to\\">
+    ="path/to">
 ",
     },
     "line": 1,
@@ -24,7 +24,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 9,
     "line": 2,
     "message": "Never insert space after equal sign of attribute",
@@ -32,7 +32,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 8,
     "line": 4,
     "message": "Never insert space after equal sign of attribute",
@@ -40,7 +40,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 8,
     "line": 7,
     "message": "Never insert space after equal sign of attribute",
@@ -52,15 +52,15 @@ Array [
 `;
 
 exports[`fixtures: attr-spacing.html 1`] = `
-Array [
-  Object {
+[
+  {
     "column": 19,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         0,
         34,
       ],
-      "text": "<img src=\\"path/to\\" src=\\"path/to2\\">
+      "text": "<img src="path/to" src="path/to2">
 ",
     },
     "line": 1,
@@ -73,23 +73,23 @@ Array [
 `;
 
 exports[`fixtures: combine.html 1`] = `
-Array [
-  Object {
+[
+  {
     "column": 9,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         0,
         141,
       ],
-      "text": "<img src=\\"path/to\\">
-<img src =\\"path/to\\">
+      "text": "<img src="path/to">
+<img src ="path/to">
 <img
-    src=\\"path/to\\">
+    src="path/to">
 <img
     src
-    =\\"path/to\\">
+    ="path/to">
 
-<img src=\\"path/to\\" src=\\"path/to2\\">
+<img src="path/to" src="path/to2">
 ",
     },
     "line": 1,
@@ -98,7 +98,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 9,
     "line": 2,
     "message": "Never insert space after equal sign of attribute",
@@ -106,7 +106,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 8,
     "line": 4,
     "message": "Never insert space after equal sign of attribute",
@@ -114,7 +114,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 8,
     "line": 7,
     "message": "Never insert space after equal sign of attribute",
@@ -122,7 +122,7 @@ Array [
     "ruleId": "markup/attr-equal-space-after",
     "severity": 1,
   },
-  Object {
+  {
     "column": 19,
     "line": 11,
     "message": "Required space",
@@ -134,8 +134,8 @@ Array [
 `;
 
 exports[`fixtures: doctype.html 1`] = `
-Array [
-  Object {
+[
+  {
     "column": 1,
     "line": 1,
     "message": "Require doctype",
@@ -146,4 +146,4 @@ Array [
 ]
 `;
 
-exports[`fixtures: empty.html 1`] = `Array []`;
+exports[`fixtures: empty.html 1`] = `[]`;
