@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-markup",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "An incredible ESLint plugin for all markup languages based on markuplint",
   "repository": "git+https://github.com/un-ts/eslint.git",
   "homepage": "https://github.com/un-ts/eslint/blob/main/packages/markup",
