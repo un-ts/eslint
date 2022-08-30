@@ -8,7 +8,7 @@ const eslint = new ESLint({
   overrideConfig: {
     overrides: [
       {
-        files: '*.txt',
+        files: '*.{md,txt}',
         extends: 'plugin:text/recommended',
       },
     ],
@@ -17,9 +17,11 @@ const eslint = new ESLint({
 
 test('fixtures', async () => {
   const results = await eslint.lintFiles(
-    path.resolve(__dirname, './fixtures/*.txt'),
+    path.resolve(__dirname, './fixtures/*.{md,txt}'),
   )
-  for (const { filePath, messages } of results) {
-    expect(messages).toMatchSnapshot(path.basename(filePath))
+  for (const { filePath, messages, output, source } of results) {
+    const filename = path.basename(filePath)
+    expect(messages).toMatchSnapshot(filename)
+    expect(output || source).toMatchSnapshot(filename)
   }
 })

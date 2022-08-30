@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "@textlint/markdown": true,
+    "@textlint/text": true
+  },
+  "rules": {
+    "textlint-rule-no-zero-width-spaces": true,
+    "textlint-rule-spellchecker": true
+  }
+}

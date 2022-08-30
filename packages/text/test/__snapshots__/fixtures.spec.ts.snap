@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fixtures: basic.md 1`] = `[]`;
+
+exports[`fixtures: basic.md 2`] = `undefined`;
+
 exports[`fixtures: basic.txt 1`] = `[]`;
+
+exports[`fixtures: basic.txt 2`] = `undefined`;
