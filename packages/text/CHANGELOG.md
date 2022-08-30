@@ -1,5 +1,11 @@
 # eslint-plugin-text
 
+## 0.1.2
+
+### Patch Changes
+
+- [`0ca3d2a`](https://github.com/un-ts/eslint/commit/0ca3d2a9ede1cc86fb8618de3209b30f7055fe36) Thanks [@JounQin](https://github.com/JounQin)! - fix: register text rules correctly
+
 ## 0.1.1
 
 ### Patch Changes
