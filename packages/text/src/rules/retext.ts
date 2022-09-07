@@ -1,8 +1,7 @@
 import { Rule } from 'eslint'
+import { JsonMessage } from 'eslint-plugin-utils'
 
 import { lint } from '../sync'
-
-import { RetextLintMessage } from './types'
 
 export const retext: Rule.RuleModule = {
   meta: {
@@ -22,7 +21,6 @@ export const retext: Rule.RuleModule = {
         let fixed = 0
 
         for (const {
-          source,
           reason,
           ruleId,
           fatal,
@@ -41,10 +39,9 @@ export const retext: Rule.RuleModule = {
             continue
           }
 
-          const message: RetextLintMessage = {
-            reason,
-            source,
-            ruleId,
+          const message: JsonMessage = {
+            message: reason,
+            ruleId: ruleId!,
             severity,
           }
           context.report({
