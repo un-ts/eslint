@@ -106,7 +106,10 @@ runAsWorker(
         const processor = await getRetextProcessor(filename, ignoreRetextConfig)
 
         const { VFile } = await loadEsmModule<typeof import('vfile')>('vfile')
-        const file = new VFile({})
+        const file = new VFile({
+          value: text,
+          path: filename,
+        })
         try {
           await processor.process(file)
         } catch (err) {
