@@ -5,7 +5,8 @@ import type { TextlintResult, TextlintFixResult } from '@textlint/kernel'
 import { cosmiconfig } from 'cosmiconfig'
 import type { CosmiconfigResult } from 'cosmiconfig/dist/types'
 import { extractProperties, runAsWorker } from 'synckit'
-import { textlint } from 'textlint'
+import { TextLintCore } from 'textlint'
+import { Config } from 'textlint/lib/src/config/config'
 import type { FrozenProcessor, Plugin } from 'unified'
 import type { VFileMessage } from 'vfile-message'
 
@@ -93,6 +94,8 @@ export const isTextlintFixResult = (
   result: TextlintResult,
 ): result is TextlintFixResult => 'output' in result
 
+const textlintCache = new Map<string, TextLintCore>()
+
 runAsWorker(
   async ({
     text,
@@ -124,6 +127,19 @@ runAsWorker(
         }
       }
       case 'textlint': {
+        let textlint: TextLintCore
+
+        if (textlintCache.has(filename)) {
+          textlint = textlintCache.get(filename)!
+        } else {
+          const textlintConfig = Config.initWithAutoLoading({
+            cwd: path.dirname(filename),
+          })
+
+          textlint = new TextLintCore(textlintConfig)
+          textlintCache.set(filename, textlint)
+        }
+
         const result: TextlintFixResult | TextlintResult = await textlint[
           fix ? 'fixText' : 'lintText'
         ](text, path.extname(filename))
