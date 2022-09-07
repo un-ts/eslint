@@ -1,5 +1,13 @@
 # eslint-plugin-text
 
+## 0.1.3
+
+### Patch Changes
+
+- [#90](https://github.com/un-ts/eslint/pull/90) [`a6dc873`](https://github.com/un-ts/eslint/commit/a6dc87305320a0e2c5aaee97a154be0c0b227346) Thanks [@JounQin](https://github.com/JounQin)! - feat: load textlint config automatically
+
+- [#88](https://github.com/un-ts/eslint/pull/88) [`2a999ec`](https://github.com/un-ts/eslint/commit/2a999ec34054937e0aa3a389ecd830942d2653eb) Thanks [@JounQin](https://github.com/JounQin)! - fix: incorrect vfile usage for retext rule
+
 ## 0.1.2
 
 ### Patch Changes
