@@ -3128,12 +3128,12 @@
     "@textlint/types" "^12.2.1"
     debug "^4.3.4"
 
-"@textlint/text-to-ast@^12.2.1":
-  version "12.2.1"
-  resolved "https://registry.yarnpkg.com/@textlint/text-to-ast/-/text-to-ast-12.2.1.tgz#22524cfeb1f7ca69ad663c502a7a00f847cabb37"
-  integrity sha512-NcuFa8iQglIMBQ1OaR1IYAIYJfBcTACVD0YtPGrdN0gkqC8TEfP5xIldiSxhkWiLPr3TQ4Mg7d6Ev5RH67n7pA==
+"@textlint/text-to-ast@^12.2.2":
+  version "12.2.2"
+  resolved "https://registry.yarnpkg.com/@textlint/text-to-ast/-/text-to-ast-12.2.2.tgz#4b321adfb03e197451318efa71bf6b02eaaaacee"
+  integrity sha512-LgCqy1y4oQfDws6rqYSlQaYyiIGRQHcGMT+ukbpBkwEtzzh9urbr6NIeVnHhEuZUITl+pZCHyHeKF2/RlGsn6Q==
   dependencies:
-    "@textlint/ast-node-types" "^12.2.1"
+    "@textlint/ast-node-types" "^12.2.2"
 
 "@textlint/textlint-plugin-markdown@^12.2.1", "@textlint/textlint-plugin-markdown@^12.2.2":
   version "12.2.2"
@@ -3142,12 +3142,12 @@
   dependencies:
     "@textlint/markdown-to-ast" "^12.2.2"
 
-"@textlint/textlint-plugin-text@^12.2.1":
-  version "12.2.1"
-  resolved "https://registry.yarnpkg.com/@textlint/textlint-plugin-text/-/textlint-plugin-text-12.2.1.tgz#5d69e8aa5bd8789e18db2cb947c1de3f812f91f4"
-  integrity sha512-8Dt1Sn9AdqvweVxCLvlj1IC+pDxPRpdgERY6FzD6kLNpMAyl7luVWtpql19CvTYlxhPUHRxsETDBkRCQFClXsw==
+"@textlint/textlint-plugin-text@^12.2.1", "@textlint/textlint-plugin-text@^12.2.2":
+  version "12.2.2"
+  resolved "https://registry.yarnpkg.com/@textlint/textlint-plugin-text/-/textlint-plugin-text-12.2.2.tgz#ccfffc390e6899eaba8e181b00d2a7b3044b9cf4"
+  integrity sha512-0HLOr9kQRXKqEcZvIaNAnOhixNfTSpveOHBuhHepByDXkXcUrb+BJdxZzhtgVu4twBAR3qJ3KYhDE8XPHc9iDg==
   dependencies:
-    "@textlint/text-to-ast" "^12.2.1"
+    "@textlint/text-to-ast" "^12.2.2"
 
 "@textlint/types@^12.2.1":
   version "12.2.1"
