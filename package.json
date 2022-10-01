@@ -39,7 +39,7 @@
     "@markuplint/rule-textlint": "^2.5.5",
     "@pkgr/webpack": "^3.4.0",
     "@pkgr/webpack-mdx": "^2.2.0",
-    "@textlint/textlint-plugin-markdown": "^12.2.1",
+    "@textlint/textlint-plugin-markdown": "^12.2.2",
     "@textlint/textlint-plugin-text": "^12.2.1",
     "@types/eslint": "^8.4.6",
     "@types/htmlhint": "^1.1.2",
