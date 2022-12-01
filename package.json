@@ -36,7 +36,7 @@
     "@1stg/lib-config": "^10.2.1",
     "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.24.4",
-    "@markuplint/rule-textlint": "^2.5.6",
+    "@markuplint/rule-textlint": "^2.5.10",
     "@pkgr/webpack": "^3.4.0",
     "@pkgr/webpack-mdx": "^2.2.0",
     "@textlint/textlint-plugin-markdown": "^12.2.2",
