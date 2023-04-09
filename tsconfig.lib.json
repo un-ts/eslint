@@ -1,4 +1,9 @@
 {
   // used by all files but do not includes paths
-  "extends": "@1stg/tsconfig/node"
+  "extends": "@1stg/tsconfig/node",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2020"
+  }
 }

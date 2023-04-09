@@ -2,10 +2,10 @@ import { Violation } from '@markuplint/ml-config'
 import { Linter } from 'eslint'
 import { registerJsonMessageHandler } from 'eslint-plugin-utils'
 
-export * as configs from './configs'
-export * from './parser'
-export * from './rules'
-export * as rules from './rules'
+export * as configs from './configs.js'
+export * from './parser.js'
+export * from './rules/index.js'
+export * as rules from './rules/index.js'
 
 const SEVERITIES = ['info', 'warning', 'error'] as const
 

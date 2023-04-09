@@ -1,139 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`fixtures: attr-equal-space-after.html 1`] = `
-[
-  {
-    "column": 9,
-    "fix": {
-      "range": [
-        0,
-        106,
-      ],
-      "text": "<img src="path/to">
-<img src ="path/to">
-<img
-    src="path/to">
-<img
-    src
-    ="path/to">
-",
-    },
-    "line": 1,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 9,
-    "line": 2,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 8,
-    "line": 4,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 8,
-    "line": 7,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-]
-`;
-
-exports[`fixtures: attr-spacing.html 1`] = `
-[
-  {
-    "column": 19,
-    "fix": {
-      "range": [
-        0,
-        34,
-      ],
-      "text": "<img src="path/to" src="path/to2">
-",
-    },
-    "line": 1,
-    "message": "Required space",
-    "nodeType": null,
-    "ruleId": "markup/attr-spacing",
-    "severity": 1,
-  },
-]
-`;
-
-exports[`fixtures: combine.html 1`] = `
-[
-  {
-    "column": 9,
-    "fix": {
-      "range": [
-        0,
-        141,
-      ],
-      "text": "<img src="path/to">
-<img src ="path/to">
-<img
-    src="path/to">
-<img
-    src
-    ="path/to">
-
-<img src="path/to" src="path/to2">
-",
-    },
-    "line": 1,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 9,
-    "line": 2,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 8,
-    "line": 4,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 8,
-    "line": 7,
-    "message": "Never insert space after equal sign of attribute",
-    "nodeType": null,
-    "ruleId": "markup/attr-equal-space-after",
-    "severity": 1,
-  },
-  {
-    "column": 19,
-    "line": 11,
-    "message": "Required space",
-    "nodeType": null,
-    "ruleId": "markup/attr-spacing",
-    "severity": 1,
-  },
-]
-`;
-
-exports[`fixtures: doctype.html 1`] = `
+exports[`fixtures > doctype.html 1`] = `
 [
   {
     "column": 1,
@@ -146,4 +13,33 @@ exports[`fixtures: doctype.html 1`] = `
 ]
 `;
 
-exports[`fixtures: empty.html 1`] = `[]`;
+exports[`fixtures > empty.html 1`] = `[]`;
+
+exports[`fixtures > id-duplication.html 1`] = `
+[
+  {
+    "column": 1,
+    "fix": {
+      "range": [
+        0,
+        144,
+      ],
+      "text": "<html>head
+  <body>
+    <div id=\\"a\\">
+      <p id=\\"a\\">lorem</p>
+    </div>
+
+    <div id=\\"a\\"></div>
+    <img id=\\"a\\" src=\\"path/to\\" />
+  </body>
+</html>",
+    },
+    "line": 1,
+    "message": "Require doctype",
+    "nodeType": null,
+    "ruleId": "markup/doctype",
+    "severity": 2,
+  },
+]
+`;

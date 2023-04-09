@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/no-await-expression-member */
 
+import { createRequire } from 'node:module'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
@@ -17,6 +18,9 @@ export const loadEsmModule = <T>(modulePath: URL | string): Promise<T> =>
   new Function('modulePath', `return import(modulePath);`)(
     modulePath,
   ) as Promise<T>
+
+const cjsRequire =
+  typeof require === 'undefined' ? createRequire(import.meta.url) : require
 
 /**
  * ! copied from https://github.com/just-jeb/angular-builders/blob/master/packages/custom-webpack/src/utils.ts#L53-L67
@@ -49,15 +53,15 @@ export const loadModule = async <T>(modulePath: string): Promise<T> => {
     }
     /* istanbul ignore next */
     case '.cjs': {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-return
-      return require(modulePath)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return cjsRequire(modulePath)
     }
     default: {
       // The file could be either CommonJS or ESM.
       // CommonJS is tried first then ESM if loading fails.
       try {
-        // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-return
-        return require(modulePath)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return cjsRequire(modulePath)
       } catch (err) {
         /* istanbul ignore if */
         if ((err as { code: string }).code === 'ERR_REQUIRE_ESM') {

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`fixtures: basic.md 1`] = `
+exports[`fixtures > basic.md 1`] = `
 [
   {
     "column": 7,
@@ -38,7 +38,7 @@ reference: -",
 ]
 `;
 
-exports[`fixtures: basic.md 2`] = `
+exports[`fixtures > basic.md 2`] = `
 "# I'm ani typo.
 
 ## productentries
@@ -48,7 +48,7 @@ exports[`fixtures: basic.md 2`] = `
 "
 `;
 
-exports[`fixtures: basic.txt 1`] = `
+exports[`fixtures > basic.txt 1`] = `
 [
   {
     "column": 5,
@@ -86,7 +86,7 @@ reference: -",
 ]
 `;
 
-exports[`fixtures: basic.txt 2`] = `
+exports[`fixtures > basic.txt 2`] = `
 "I'm ani typo.
 
 productentries

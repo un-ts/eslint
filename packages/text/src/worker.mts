@@ -6,11 +6,11 @@ import { cosmiconfig } from 'cosmiconfig'
 import type { CosmiconfigResult } from 'cosmiconfig/dist/types'
 import { extractProperties, runAsWorker } from 'synckit'
 import { TextLintCore } from 'textlint'
-import { Config } from 'textlint/lib/src/config/config'
+import { Config } from 'textlint/lib/src/config/config.js'
 import type { FrozenProcessor, Plugin } from 'unified'
 import type { VFileMessage } from 'vfile-message'
 
-import { arrayify, loadEsmModule, loadModule, requirePkg } from './helpers'
+import { arrayify, loadEsmModule, loadModule, requirePkg } from './helpers.js'
 import {
   UnifiedConfig,
   UnifiedPlugin,

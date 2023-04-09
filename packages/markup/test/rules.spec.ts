@@ -98,3 +98,8 @@ tester.run('markup', markup, {
     },
   ],
 })
+
+// trick
+test('test', () => {
+  expect(true).toBeTruthy()
+})

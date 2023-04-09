@@ -1,4 +1,5 @@
 module.exports = {
+  extends: ['markuplint:recommended'],
   rules: {
     textlint: {
       option: {

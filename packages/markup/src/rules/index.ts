@@ -1,1 +1,1 @@
-export * from './markup'
+export * from './markup.js'

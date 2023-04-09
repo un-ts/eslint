@@ -1,6 +1,6 @@
 import { Linter } from 'eslint'
 
-import { jsonMessageHandlers } from './helpers'
+import { jsonMessageHandlers } from './helpers.js'
 
 export const jsonMessage: Linter.Processor = {
   supportsAutofix: true,
