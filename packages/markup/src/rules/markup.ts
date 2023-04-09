@@ -1,21 +1,6 @@
-import { Target } from '@markuplint/file-resolver'
-import { Violation } from '@markuplint/ml-config'
 import { Rule } from 'eslint'
-import { createSyncFn } from 'synckit'
 
-const workerPath = require.resolve('../worker')
-
-// call `creatSyncFn` lazily for performance, it is already cached inside, related #31
-const _ = {
-  get markuplintSync() {
-    return createSyncFn<
-      (
-        target: Target,
-        fix?: boolean,
-      ) => Promise<{ violations: Violation[]; fixedCode: string }>
-    >(workerPath)
-  },
-}
+import { sync } from '../sync.js'
 
 export const markup: Rule.RuleModule = {
   meta: {
@@ -32,7 +17,7 @@ export const markup: Rule.RuleModule = {
     }
 
     const runMarkuplint = (fix?: boolean) =>
-      _.markuplintSync(markuplintOptions, fix)
+      sync.markuplintSync(markuplintOptions, fix)
 
     return {
       Program() {

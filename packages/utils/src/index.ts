@@ -1,2 +1,2 @@
-export * from './helpers'
-export * as processors from './processors'
+export * from './helpers.js'
+export * as processors from './processors.js'

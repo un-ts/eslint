@@ -1,24 +1,24 @@
 {
   "name": "eslint-plugin-react-enhanced",
   "version": "0.0.1",
+  "type": "module",
   "description": "An incredible ESLint plugin for @react-enhanced",
   "repository": "git+https://github.com/un-ts/eslint.git",
   "homepage": "https://github.com/un-ts/eslint/blob/main/packages/react-enhanced",
   "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
-  "packageManager": "yarn@1.22.19",
   "engines": {
-    "node": ">=10"
+    "node": "^14.18.0 || >=16.0.0"
   },
-  "main": "./lib/index.js",
-  "module": "./lib/index.es2015.mjs",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
   "exports": {
     "types": "./lib/index.d.ts",
-    "import": "./lib/index.es2015.mjs",
-    "require": "./lib/index.js"
+    "import": "./lib/index.js",
+    "require": "./lib/index.cjs"
   },
-  "es2015": "./lib/index.es2015.mjs",
+  "es2015": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "lib"
@@ -35,7 +35,7 @@
     "eslint": ">=5.0.0"
   },
   "dependencies": {
-    "tslib": "^2.4.0"
+    "tslib": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"

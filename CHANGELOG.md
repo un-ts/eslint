@@ -6,4 +6,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - [eslint-plugin-htm](./packages/htm/CHANGELOG.md)
 - [eslint-plugin-markup](./packages/markup/CHANGELOG.md)
 - [eslint-plugin-react-enhanced](./packages/react-enhanced/CHANGELOG.md)
+- [eslint-plugin-text](./packages/text/CHANGELOG.md)
 - [eslint-plugin-utils](./packages/utils/CHANGELOG.md)

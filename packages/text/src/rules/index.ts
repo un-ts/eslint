@@ -1,2 +1,2 @@
-export * from './retext'
-export * from './textlint'
+export * from './retext.js'
+export * from './textlint.js'

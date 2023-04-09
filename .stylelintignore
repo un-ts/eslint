@@ -5,9 +5,12 @@ LICENSE
 *.json
 *.lock
 *.log
+*.mts
 *.pug
 *.snap
+*.ts
 *.tsbuildinfo
+*.tsx
 *.txt
 *.yaml
 *.yml

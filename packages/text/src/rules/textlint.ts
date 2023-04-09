@@ -1,7 +1,7 @@
 import { Rule } from 'eslint'
 import { JsonMessage } from 'eslint-plugin-utils'
 
-import { lint } from '../sync'
+import { lint } from '../sync.js'
 
 export const textlint: Rule.RuleModule = {
   meta: {
