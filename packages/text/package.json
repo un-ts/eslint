@@ -9,7 +9,7 @@
   "funding": "https://opencollective.com/unts",
   "license": "MIT",
   "engines": {
-    "node": "^14.18.0 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
