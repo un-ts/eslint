@@ -39,7 +39,7 @@
     "@changesets/cli": "^2.26.2",
     "@markuplint/rule-textlint": "^3.9.1",
     "@mdx-js/rollup": "^2.3.0",
-    "@textlint/textlint-plugin-markdown": "^13.3.2",
+    "@textlint/textlint-plugin-markdown": "^13.3.3",
     "@textlint/textlint-plugin-text": "^13.3.2",
     "@types/eslint": "^8.37.0",
     "@types/htmlhint": "^1.1.2",
