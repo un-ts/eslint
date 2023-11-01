@@ -3577,10 +3577,10 @@
   dependencies:
     "@types/unist" "*"
 
-"@types/htmlhint@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@types/htmlhint/-/htmlhint-1.1.3.tgz#66c47c01f989002cce3d62f599d9802e807bdb21"
-  integrity sha512-9Rd0X+FC9F7QwJK96XH/02+xRaG+W9rPFY9Qf5DQaLXmeZXJmOq1C6zKr4LOPqHkAMZfbAZ2A73C8xY1aCn5iA==
+"@types/htmlhint@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@types/htmlhint/-/htmlhint-1.1.4.tgz#d5889d32bf463d35e60d41545bd383fc22bc0d80"
+  integrity sha512-vJzYcLhzpfpc26Kddb1PYJBtVxFUehRqqfl0+i1DjDQrn4yj4VZH+NFSUjqjqgRWsxrSjsMCAvCjuC4n5XKkSA==
 
 "@types/is-ci@^3.0.0":
   version "3.0.0"
