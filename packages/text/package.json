@@ -43,7 +43,7 @@
     "retext-stringify": "^3.1.0",
     "synckit": "^0.8.8",
     "textlint": "^13.3.2",
-    "tslib": "^2.5.0",
+    "tslib": "^2.6.2",
     "unified": "^10.1.2",
     "vfile": "^5.3.7",
     "vfile-message": "^3.1.4"

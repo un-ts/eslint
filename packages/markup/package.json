@@ -43,7 +43,7 @@
     "eslint-plugin-utils": "^0.3.2",
     "markuplint": "^3.7.0",
     "synckit": "^0.8.8",
-    "tslib": "^2.5.0"
+    "tslib": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"
