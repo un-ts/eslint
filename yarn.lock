@@ -3544,10 +3544,10 @@
   dependencies:
     "@types/ms" "*"
 
-"@types/eslint@^8.37.0":
-  version "8.37.0"
-  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.37.0.tgz#29cebc6c2a3ac7fea7113207bf5a828fdf4d7ef1"
-  integrity sha512-Piet7dG2JBuDIfohBngQ3rCt7MgO9xCO4xIMKxBThCq5PNRB91IjlJ10eJVwfoNtvTErmxLzwBZ7rHZtbOMmFQ==
+"@types/eslint@^8.56.10":
+  version "8.56.10"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.56.10.tgz#eb2370a73bf04a901eeba8f22595c7ee0f7eb58d"
+  integrity sha512-Shavhk87gCtY2fhXDctcfS3e6FdxWkCx1iUZ9eEUbh7rTqlZT0/IzOkCOVt0fCjcFuZ9FPYfuezTBImfHCDBGQ==
   dependencies:
     "@types/estree" "*"
     "@types/json-schema" "*"
