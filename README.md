@@ -25,6 +25,8 @@ This repository is a monorepo managed by [changesets][] what means we actually p
 | [`eslint-plugin-text`](/packages/text)                     | An incredible ESLint plugin for retext or textlint                       | [![npm](https://img.shields.io/npm/v/eslint-plugin-text.svg)](https://www.npmjs.com/package/eslint-plugin-text) [![View changelog](https://img.shields.io/badge/changelog-explore-brightgreen)](https://changelogs.xyz/eslint-plugin-text)                               |
 | [`eslint-plugin-utils`](/packages/utils)                   | Utilities for ESLint plugins and custom rules                            | [![npm](https://img.shields.io/npm/v/eslint-plugin-utils.svg)](https://www.npmjs.com/package/eslint-plugin-utils) [![View changelog](https://img.shields.io/badge/changelog-explore-brightgreen)](https://changelogs.xyz/eslint-plugin-utils)                            |
 
+[![Sponsors](https://raw.githubusercontent.com/1stG/static/master/sponsors.svg)](https://github.com/sponsors/JounQin)
+
 ## Sponsors
 
 | 1stG                                                                                                                               | RxTS                                                                                                                               | UnTS                                                                                                                               |
@@ -32,8 +34,6 @@ This repository is a monorepo managed by [changesets][] what means we actually p
 | [![1stG Open Collective backers and sponsors](https://opencollective.com/1stG/organizations.svg)](https://opencollective.com/1stG) | [![RxTS Open Collective backers and sponsors](https://opencollective.com/rxts/organizations.svg)](https://opencollective.com/rxts) | [![UnTS Open Collective backers and sponsors](https://opencollective.com/unts/organizations.svg)](https://opencollective.com/unts) |
 
 ## Backers
-
-[![Backers](https://raw.githubusercontent.com/1stG/static/master/sponsors.svg)](https://github.com/sponsors/JounQin)
 
 | 1stG                                                                                                                             | RxTS                                                                                                                             | UnTS                                                                                                                             |
 | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |

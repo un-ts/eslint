@@ -16,8 +16,5 @@
     {
       "path": "packages/text"
     }
-  ],
-  "ts-node": {
-    "transpileOnly": true
-  }
+  ]
 }

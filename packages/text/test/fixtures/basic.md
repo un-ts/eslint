@@ -1,6 +1,7 @@
-# I'm ani typo.
+# I'm ani typo
 
 ## productentries
+
 ## integrationclasses
 
-![GitHubb](githhub.com)
+![GitHubb](https://githhub.com)

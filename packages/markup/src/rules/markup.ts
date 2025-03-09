@@ -1,15 +1,18 @@
-import { Rule } from 'eslint'
+import type { TSESLint } from '@typescript-eslint/utils'
 
 import { sync } from '../sync.js'
 
-export const markup: Rule.RuleModule = {
+export const markup: TSESLint.RuleModule<never> = {
   meta: {
     fixable: 'code',
     type: 'problem',
+    messages: {},
+    schema: [],
   },
+  defaultOptions: [],
   create(context) {
-    const filename = context.getFilename()
-    const sourceText = context.getSourceCode().text
+    const filename = context.filename
+    const sourceText = context.sourceCode.text
 
     const markuplintOptions = {
       sourceCode: sourceText,
@@ -31,6 +34,7 @@ export const markup: Rule.RuleModule = {
 
         for (const { ruleId, severity, message, line, col } of violations) {
           context.report({
+            // @ts-expect-error -- it's fine
             message: JSON.stringify({ severity, message, ruleId }),
             loc: {
               line,

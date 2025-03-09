@@ -5,10 +5,10 @@ exports[`fixtures > doctype.html 1`] = `
   {
     "column": 1,
     "line": 1,
-    "message": "Require doctype",
+    "message": "{"severity":"error","message":"Require doctype","ruleId":"doctype"}",
     "nodeType": null,
-    "ruleId": "markup/doctype",
-    "severity": 2,
+    "ruleId": "markup/markup",
+    "severity": 1,
   },
 ]
 `;
@@ -19,27 +19,11 @@ exports[`fixtures > id-duplication.html 1`] = `
 [
   {
     "column": 1,
-    "fix": {
-      "range": [
-        0,
-        144,
-      ],
-      "text": "<html>head
-  <body>
-    <div id=\\"a\\">
-      <p id=\\"a\\">lorem</p>
-    </div>
-
-    <div id=\\"a\\"></div>
-    <img id=\\"a\\" src=\\"path/to\\" />
-  </body>
-</html>",
-    },
     "line": 1,
-    "message": "Require doctype",
+    "message": "{"severity":"error","message":"Require doctype","ruleId":"doctype"}",
     "nodeType": null,
-    "ruleId": "markup/doctype",
-    "severity": 2,
+    "ruleId": "markup/markup",
+    "severity": 1,
   },
 ]
 `;

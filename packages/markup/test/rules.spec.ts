@@ -1,17 +1,17 @@
 import path from 'node:path'
 
-import { RuleTester } from 'eslint'
+import { RuleTester, type ValidTestCase } from '@typescript-eslint/rule-tester'
 
-import { markup } from 'eslint-plugin-markup'
+import { parser, rules } from 'eslint-plugin-markup'
 
 const tester = new RuleTester()
 
-const options = {
-  parser: require.resolve('eslint-plugin-markup'),
+const options: Pick<ValidTestCase<[]>, 'filename' | 'languageOptions'> = {
+  languageOptions: { parser },
   filename: path.join(__dirname, 'fixtures/basic.html'),
 }
 
-tester.run('markup', markup, {
+tester.run('markup', rules.markup, {
   valid: [
     {
       ...options,
@@ -69,6 +69,7 @@ tester.run('markup', markup, {
       `,
       errors: [
         {
+          // @ts-expect-error -- it's fine
           message: JSON.stringify({
             severity: 'error',
             message: 'Require doctype',
@@ -85,6 +86,7 @@ tester.run('markup', markup, {
       filename: path.join(__dirname, 'fixtures/textlint/test.html'),
       errors: [
         {
+          // @ts-expect-error -- it's fine
           message: JSON.stringify({
             severity: 'warning',
             message:

@@ -15,10 +15,9 @@
   "module": "./lib/index.js",
   "exports": {
     "types": "./lib/index.d.ts",
-    "import": "./lib/index.js",
-    "require": "./lib/index.cjs"
+    "require": "./lib/index.cjs",
+    "default": "./lib/index.js"
   },
-  "es2015": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "lib"
@@ -36,12 +35,18 @@
     "linthtml"
   ],
   "peerDependencies": {
+    "@typescript-eslint/utils": ">=7.0.0",
     "eslint": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@typescript-eslint/utils": {
+      "optional": true
+    }
   },
   "dependencies": {
     "eslint-plugin-utils": "^0.3.2",
     "htmlhint": "^1.1.4",
-    "tslib": "^2.5.0"
+    "tslib": "^2.8.1"
   },
   "publishConfig": {
     "access": "public"

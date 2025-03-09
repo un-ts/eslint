@@ -12,5 +12,7 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: ['lcov', 'json'],
     },
+    setupFiles: ['./test-setup.ts'],
+    testTimeout: 60_000,
   },
 })

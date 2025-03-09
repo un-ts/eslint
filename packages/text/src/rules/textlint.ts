@@ -1,22 +1,26 @@
-import { Rule } from 'eslint'
-import { JsonMessage } from 'eslint-plugin-utils'
+import type { TSESLint } from '@typescript-eslint/utils'
+import type { JsonMessage } from 'eslint-plugin-utils'
 
 import { lint } from '../sync.js'
 
-export const textlint: Rule.RuleModule = {
+export const textlint: TSESLint.RuleModule<never> = {
   meta: {
     type: 'problem',
     fixable: 'code',
+    messages: {},
+    schema: [],
   },
+  defaultOptions: [],
   create(context) {
-    const sourceText = context.getSourceCode().text
+    const sourceText = context.sourceCode.text
 
     return {
       Program() {
         const result = lint({
           text: sourceText,
-          filename: context.getFilename(),
+          filename: context.filename,
           linter: 'textlint',
+          fix: true,
         })
         for (const { message, loc, severity, ruleId, fix } of result.messages) {
           if (severity === 0) {
@@ -24,9 +28,10 @@ export const textlint: Rule.RuleModule = {
           }
           const msg: JsonMessage = { severity, message, ruleId }
           context.report({
+            // @ts-expect-error -- it's fine
             message: JSON.stringify(msg),
             loc,
-            fix: fix && (() => fix as Rule.Fix),
+            fix: fix && (() => fix),
           })
         }
       },

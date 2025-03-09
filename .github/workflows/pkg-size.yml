@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pkg-size-report:
     name: Package Size Report
@@ -12,12 +16,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: lts/*
           cache: yarn
 
       - name: Package Size Report

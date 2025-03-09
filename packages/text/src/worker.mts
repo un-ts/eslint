@@ -1,31 +1,36 @@
-/* eslint-disable unicorn/no-await-expression-member */
 import path from 'node:path'
 
-import type { TextlintResult, TextlintFixResult } from '@textlint/kernel'
-import { cosmiconfig } from 'cosmiconfig'
-import type { CosmiconfigResult } from 'cosmiconfig/dist/types'
+import { loadConfig } from '@textlint/config-loader'
+import type { TextlintFixResult, TextlintResult } from '@textlint/kernel'
+import { loadModule, requirePkg } from 'eslint-plugin-utils'
+import { lilconfig, type LilconfigResult } from 'lilconfig'
+import type { Root } from 'nlcst'
+import retextStringify from 'retext-stringify'
 import { extractProperties, runAsWorker } from 'synckit'
-import { TextLintCore } from 'textlint'
-import { Config } from 'textlint/lib/src/config/config.js'
-import type { FrozenProcessor, Plugin } from 'unified'
+import { createLinter, loadTextlintrc } from 'textlint'
+import { unified, type Plugin, type Processor } from 'unified'
+import { VFile } from 'vfile'
 import type { VFileMessage } from 'vfile-message'
 
-import { arrayify, loadEsmModule, loadModule, requirePkg } from './helpers.js'
-import {
+import { arrayify } from './helpers.js'
+import type {
   UnifiedConfig,
   UnifiedPlugin,
   WorkerOptions,
   WorkerResult,
-} from './types'
+} from './types.js'
 
-const explorer = cosmiconfig('retext', {
+const explorer = lilconfig('retext', {
   packageProp: 'retextConfig',
   loaders: {
-    '.js': (filepath: string) => loadModule(filepath),
+    '.js': loadModule,
   },
 })
 
-export const processorCache = new Map<string, FrozenProcessor>()
+export const processorCache = new Map<
+  string,
+  Processor<undefined, undefined, undefined, Root, string>
+>()
 
 export const getRetextProcessor = async (
   searchFrom: string,
@@ -39,7 +44,7 @@ export const getRetextProcessor = async (
     return cachedProcessor
   }
 
-  const result: CosmiconfigResult = ignoreRetextConfig
+  const result: LilconfigResult = ignoreRetextConfig
     ? null
     : await explorer.search(searchFrom)
 
@@ -51,34 +56,30 @@ export const getRetextProcessor = async (
     return cachedProcessor
   }
 
-  const { unified } = await loadEsmModule<typeof import('unified')>('unified')
-
-  const retextStringify = (
-    await loadEsmModule<typeof import('retext-stringify')>('retext-stringify')
-  ).default
-
   if (result) {
     const { plugins = [], settings } =
-      // type-coverage:ignore-next-line -- cosmiconfig's typings issue
+      // type-coverage:ignore-next-line -- lilconfig's typings issue
       (result.config || {}) as Partial<UnifiedConfig>
 
-    cachedProcessor = (
-      await plugins.reduce(async (processor, pluginWithSettings) => {
+    const reducedProcessor = await plugins.reduce(
+      async (processor_, pluginWithSettings) => {
         const [plugin, ...pluginSettings] = arrayify(pluginWithSettings) as [
           UnifiedPlugin,
-          ...unknown[],
+          ...[],
         ]
-        return (await processor).use(
+        const processor = await processor_
+        return processor.use(
           /* istanbul ignore next */
           typeof plugin === 'string'
             ? await requirePkg<Plugin>(plugin, 'retext', result.filepath)
             : plugin,
           ...pluginSettings,
-        )
-      }, Promise.resolve(unified().use({ settings })))
+        ) as unknown as Processor
+      },
+      Promise.resolve(unified().use({ settings })),
     )
-      .use(retextStringify)
-      .freeze()
+
+    cachedProcessor = reducedProcessor.use(retextStringify).freeze()
   } else {
     cachedProcessor = unified().use(retextStringify).freeze()
   }
@@ -94,7 +95,9 @@ export const isTextlintFixResult = (
   result: TextlintResult,
 ): result is TextlintFixResult => 'output' in result
 
-const textlintCache = new Map<string, TextLintCore>()
+export type TextLinter = ReturnType<typeof createLinter>
+
+const textlintCache = new Map<string, TextLinter>()
 
 runAsWorker(
   async ({
@@ -108,7 +111,6 @@ runAsWorker(
       case 'retext': {
         const processor = await getRetextProcessor(filename, ignoreRetextConfig)
 
-        const { VFile } = await loadEsmModule<typeof import('vfile')>('vfile')
         const file = new VFile({
           value: text,
           path: filename,
@@ -127,22 +129,28 @@ runAsWorker(
         }
       }
       case 'textlint': {
-        let textlint: TextLintCore
+        let textlint: TextLinter
 
         if (textlintCache.has(filename)) {
           textlint = textlintCache.get(filename)!
         } else {
-          const textlintConfig = Config.initWithAutoLoading({
-            cwd: path.dirname(filename),
+          const cwd = path.dirname(filename)
+          const config = await loadConfig({ cwd })
+          const textlintrcDescriptor = await loadTextlintrc({
+            configFilePath: config.configFilePath,
           })
 
-          textlint = new TextLintCore(textlintConfig)
+          textlint = createLinter({
+            descriptor: textlintrcDescriptor,
+            cwd,
+          })
           textlintCache.set(filename, textlint)
         }
 
-        const result: TextlintFixResult | TextlintResult = await textlint[
-          fix ? 'fixText' : 'lintText'
-        ](text, path.extname(filename))
+        const result = await textlint[fix ? 'fixText' : 'lintText'](
+          text,
+          filename,
+        )
         return {
           messages: result.messages,
           content: isTextlintFixResult(result) ? result.output : text,

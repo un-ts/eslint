@@ -4,7 +4,7 @@
     "@textlint/text": true
   },
   "rules": {
-    "textlint-rule-no-zero-width-spaces": true,
-    "textlint-rule-spellchecker": true
+    "max-comma": true,
+    "no-zero-width-spaces": true
   }
 }
