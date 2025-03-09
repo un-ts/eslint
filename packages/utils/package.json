@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-utils",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "type": "module",
   "description": "Utilities for ESLint plugins and custom rules",
   "repository": "git+https://github.com/un-ts/eslint.git",

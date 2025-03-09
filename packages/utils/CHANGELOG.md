@@ -1,5 +1,11 @@
 # eslint-plugin-utils
 
+## 0.4.0
+
+### Minor Changes
+
+- [#133](https://github.com/un-ts/eslint/pull/133) [`dfabbde`](https://github.com/un-ts/eslint/commit/dfabbde34a58838d85c9b376ebd318447f6dba10) Thanks [@JounQin](https://github.com/JounQin)! - chore: bump and add flat config support
+
 ## 0.3.2
 
 ### Patch Changes
