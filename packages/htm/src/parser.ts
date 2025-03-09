@@ -1,16 +1,25 @@
-import { Linter } from 'eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { TSESLint } from '@typescript-eslint/utils'
 
-export interface HtmlParserOptions extends Linter.ParserOptions {
+import { version } from './meta.js'
+
+export const meta = {
+  name: 'htm-eslint',
+  version,
+}
+
+export interface HtmlParserOptions extends TSESLint.Linter.ParserOptions {
   filePath?: string
 }
 
 export const parseForESLint = (
   text: string,
   _options?: HtmlParserOptions,
-): Linter.ESLintParseResult => {
+): TSESLint.Parser.ParseResult => {
   const lines = text.split('\n')
   return {
     ast: {
+      // @ts-expect-error -- bad ts enum
       type: 'Program',
       sourceType: 'module',
       comments: [],
@@ -24,7 +33,7 @@ export const parseForESLint = (
         },
         end: {
           line: lines.length,
-          column: lines[lines.length - 1].length,
+          column: lines.at(-1)?.length ?? 0,
         },
       },
     },
@@ -32,5 +41,7 @@ export const parseForESLint = (
 }
 
 /* istanbul ignore next */
-export const parse = (text: string, options?: HtmlParserOptions) =>
-  parseForESLint(text, options).ast
+export const parse = (
+  text: string,
+  options?: HtmlParserOptions,
+): TSESTree.Program => parseForESLint(text, options).ast

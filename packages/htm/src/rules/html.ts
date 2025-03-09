@@ -1,18 +1,22 @@
-import { Rule } from 'eslint'
+import type { TSESLint } from '@typescript-eslint/utils'
 import { HTMLHint } from 'htmlhint'
 
-export const html: Rule.RuleModule = {
+export const html: TSESLint.RuleModule<never> = {
   meta: {
     type: 'problem',
+    messages: {},
+    schema: [],
   },
+  defaultOptions: [],
   create(context) {
-    const sourceCode = context.getSourceCode().text
+    const sourceText = context.sourceCode.text
 
     return {
       Program() {
-        const results = HTMLHint.verify(sourceCode)
+        const results = HTMLHint.verify(sourceText)
         for (const { evidence, message, line, col, rule } of results) {
           context.report({
+            // @ts-expect-error -- it's fine
             message: JSON.stringify({ evidence, message, rule }),
             loc: {
               line,

@@ -1,8 +1,8 @@
-import { Linter } from 'eslint'
+import type { TSESLint } from '@typescript-eslint/utils'
 
 import { jsonMessageHandlers } from './helpers.js'
 
-export const jsonMessage: Linter.Processor = {
+export const jsonMessage: TSESLint.Processor.ProcessorModule = {
   supportsAutofix: true,
   postprocess(messagesList) {
     return messagesList.flatMap(messages =>

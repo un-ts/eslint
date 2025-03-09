@@ -5,4 +5,4 @@ export const rules = {
   preferObservable,
 }
 
-export { preferObservable } from './prefer-observable'
+export { preferObservable } from './prefer-observable.js'

@@ -23,7 +23,7 @@ export interface WorkerResult<T extends Linter = Linter> {
   messages: Linter extends T
     ? TextlintMessage[] | VFileMessage[]
     : 'retext' extends T
-    ? VFileMessage[]
-    : TextlintMessage[]
+      ? VFileMessage[]
+      : TextlintMessage[]
   content: string
 }

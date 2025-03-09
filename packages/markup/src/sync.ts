@@ -1,13 +1,13 @@
-import path, { dirname } from 'node:path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import { Target } from '@markuplint/file-resolver'
-import { Violation } from '@markuplint/ml-config'
+import type { Target } from '@markuplint/file-resolver'
+import type { Violation } from '@markuplint/ml-config'
 import { createSyncFn } from 'synckit'
 
 const _dirname =
   typeof __dirname === 'undefined'
-    ? dirname(fileURLToPath(import.meta.url))
+    ? path.dirname(fileURLToPath(import.meta.url))
     : __dirname
 
 const workerPath = path.resolve(_dirname, './worker.mjs')

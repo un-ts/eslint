@@ -1,12 +1,12 @@
-import { Linter } from 'eslint'
+import type { TSESLint } from '@typescript-eslint/utils'
 
-export const base: Linter.Config = {
+export const base: TSESLint.ClassicConfig.Config = {
   parser: 'eslint-plugin-markup',
   plugins: ['markup', 'utils'],
   processor: 'utils/jsonMessage',
 }
 
-export const recommended: Linter.Config = {
+export const recommended: TSESLint.ClassicConfig.Config = {
   ...base,
   rules: {
     'markup/markup': 1,

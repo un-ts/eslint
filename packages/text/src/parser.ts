@@ -1,5 +1,12 @@
 import { Linter } from 'eslint'
 
+import { version } from './meta.js'
+
+export const meta = {
+  name: 'text-eslint',
+  version,
+}
+
 export interface TextParserOptions extends Linter.ParserOptions {
   filePath?: string
 }
@@ -24,7 +31,7 @@ export const parseForESLint = (
         },
         end: {
           line: lines.length,
-          column: lines[lines.length - 1].length,
+          column: lines.at(-1)?.length ?? 0,
         },
       },
     },

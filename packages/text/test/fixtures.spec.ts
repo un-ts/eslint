@@ -1,18 +1,12 @@
 import path from 'node:path'
 
-import { ESLint } from 'eslint'
+import { TSESLint } from '@typescript-eslint/utils'
 
-const eslint = new ESLint({
-  useEslintrc: false,
+import { configs } from 'eslint-plugin-text'
+
+const eslint = new TSESLint.ESLint({
   ignore: false,
-  overrideConfig: {
-    overrides: [
-      {
-        files: '*.{md,txt}',
-        extends: 'plugin:text/recommended',
-      },
-    ],
-  },
+  overrideConfig: [configs.flatRecommended],
 })
 
 test('fixtures', async () => {

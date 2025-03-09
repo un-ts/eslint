@@ -1,4 +1,4 @@
-import { Target } from '@markuplint/file-resolver'
+import type { Target } from '@markuplint/file-resolver'
 import { mlTestFile } from 'markuplint'
 import { runAsWorker } from 'synckit'
 

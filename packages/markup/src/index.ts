@@ -1,11 +1,42 @@
-import { Violation } from '@markuplint/ml-config'
-import { Linter } from 'eslint'
-import { registerJsonMessageHandler } from 'eslint-plugin-utils'
+import type { Violation } from '@markuplint/ml-config'
+import type { TSESLint } from '@typescript-eslint/utils'
+import { processors, registerJsonMessageHandler } from 'eslint-plugin-utils'
 
-export * as configs from './configs.js'
-export * from './parser.js'
-export * from './rules/index.js'
-export * as rules from './rules/index.js'
+import * as configs_ from './configs.js'
+import * as meta from './meta.js'
+import * as parser from './parser.js'
+import * as rules from './rules/index.js'
+
+const markup: TSESLint.Linter.Plugin = {
+  meta,
+  rules,
+  processors,
+}
+
+const flatBase: TSESLint.FlatConfig.Config = {
+  name: 'markup/flat-base',
+  files: ['**/*.html'],
+  plugins: {
+    markup,
+  },
+  languageOptions: {
+    parser,
+  },
+}
+
+const flatRecommended: TSESLint.FlatConfig.Config = {
+  ...flatBase,
+  name: 'markup/flat-recommended',
+  rules: configs_.recommended.rules,
+}
+
+export { meta, parser, rules }
+
+export const configs = {
+  ...configs_,
+  flatBase,
+  flatRecommended,
+}
 
 const SEVERITIES = ['info', 'warning', 'error'] as const
 
@@ -17,6 +48,6 @@ registerJsonMessageHandler(
     severity: Math.max(
       eslintSeverity,
       SEVERITIES.indexOf(severity),
-    ) as Linter.Severity,
+    ) as TSESLint.Linter.Severity,
   }),
 )
