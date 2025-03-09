@@ -76,6 +76,7 @@
     "vitest": "^3.0.8"
   },
   "resolutions": {
+    "eslint-plugin-markup": "workspaces:*",
     "prettier": "^3.5.3"
   },
   "commitlint": {
