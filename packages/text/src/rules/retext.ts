@@ -20,6 +20,7 @@ export const retext: TSESLint.RuleModule<never> = {
           text: sourceText,
           filename: context.filename,
           linter: 'retext',
+          fix: true,
         })
         let fixed = 0
 

@@ -1,5 +1,110 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`fixtures > basic.md 1`] = `[]`;
+exports[`fixtures > basic.md 1`] = `
+[
+  {
+    "column": 7,
+    "endColumn": 10,
+    "endLine": 1,
+    "line": 1,
+    "message": "{"message":"Unexpected unknown word \`ani\`, expected for example \`an\`, \`and\`, \`ans\`, \`ant\`, \`anti\`, \`any\`, \`bani\`, \`uni\`, \`Agni\`, \`AI\`, \`Ali\`, \`Ana\`, \`Ann\`, \`ANSI\`, \`API\`, \`AVI\`, \`MANI\`, \`Ni\`","ruleId":"ani","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+  {
+    "column": 4,
+    "endColumn": 18,
+    "endLine": 3,
+    "line": 3,
+    "message": "{"message":"Unexpected unknown word \`productentries\`","ruleId":"productentries","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+  {
+    "column": 4,
+    "endColumn": 22,
+    "endLine": 5,
+    "line": 5,
+    "message": "{"message":"Unexpected unknown word \`integrationclasses\`","ruleId":"integrationclasses","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+  {
+    "column": 12,
+    "endColumn": 17,
+    "endLine": 7,
+    "line": 7,
+    "message": "{"message":"Unexpected unknown word \`https\`, expected for example \`HTTP\`","ruleId":"https","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+  {
+    "column": 20,
+    "endColumn": 31,
+    "endLine": 7,
+    "line": 7,
+    "message": "{"message":"Unexpected unknown word \`githhub.com\`","ruleId":"githhub-com","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+]
+`;
 
-exports[`fixtures > basic.md 2`] = `undefined`;
+exports[`fixtures > basic.md 2`] = `
+"# I'm ani typo
+
+## productentries
+
+## integrationclasses
+
+![GitHubb](https://githhub.com)
+"
+`;
+
+exports[`fixtures > basic.txt 1`] = `
+[
+  {
+    "column": 5,
+    "endColumn": 8,
+    "endLine": 1,
+    "line": 1,
+    "message": "{"message":"Unexpected unknown word \`ani\`, expected for example \`an\`, \`and\`, \`ans\`, \`ant\`, \`anti\`, \`any\`, \`bani\`, \`uni\`, \`Agni\`, \`AI\`, \`Ali\`, \`Ana\`, \`Ann\`, \`ANSI\`, \`API\`, \`AVI\`, \`MANI\`, \`Ni\`","ruleId":"ani","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+  {
+    "column": 1,
+    "endColumn": 15,
+    "endLine": 3,
+    "line": 3,
+    "message": "{"message":"Unexpected unknown word \`productentries\`","ruleId":"productentries","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+  {
+    "column": 1,
+    "endColumn": 19,
+    "endLine": 4,
+    "line": 4,
+    "message": "{"message":"Unexpected unknown word \`integrationclasses\`","ruleId":"integrationclasses","severity":1}",
+    "nodeType": "Program",
+    "ruleId": "text/retext",
+    "severity": 1,
+  },
+]
+`;
+
+exports[`fixtures > basic.txt 2`] = `
+"I'm ani typo.
+
+productentries
+integrationclasses
+"
+`;

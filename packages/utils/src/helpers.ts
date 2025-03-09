@@ -69,7 +69,11 @@ export function loadModule<T>(modulePathname: URL | string): Promise<T> | T {
         return cjsRequire(modulePath)
       } catch (err) {
         /* istanbul ignore if */
-        if ((err as { code: string }).code === 'ERR_REQUIRE_ESM') {
+        if (
+          ['ERR_REQUIRE_ESM', 'ERR_REQUIRE_ASYNC_MODULE'].includes(
+            (err as { code: string }).code,
+          )
+        ) {
           // Load the ESM configuration file using the TypeScript dynamic import workaround.
           // Once TypeScript provides support for keeping the dynamic import this workaround can be
           // changed to a direct dynamic import.

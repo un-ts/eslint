@@ -64,7 +64,7 @@
     "retext-english": "^5.0.0",
     "retext-spell": "^6.1.0",
     "sass": "^1.85.1",
-    "simple-git-hooks": "JounQin/simple-git-hooks#feat/esm_config",
+    "simple-git-hooks": "^2.11.1",
     "stylelint": "^16.15.0",
     "textlint": "^14.4.2",
     "textlint-rule-max-comma": "^4.0.0",

@@ -20,6 +20,7 @@ export const textlint: TSESLint.RuleModule<never> = {
           text: sourceText,
           filename: context.filename,
           linter: 'textlint',
+          fix: true,
         })
         for (const { message, loc, severity, ruleId, fix } of result.messages) {
           if (severity === 0) {

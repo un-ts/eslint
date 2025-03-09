@@ -1,4 +1,4 @@
-import { Linter } from 'eslint'
+import type { TSESLint, TSESTree } from '@typescript-eslint/utils'
 
 import { version } from './meta.js'
 
@@ -7,17 +7,18 @@ export const meta = {
   version,
 }
 
-export interface TextParserOptions extends Linter.ParserOptions {
+export interface TextParserOptions extends TSESLint.Linter.ParserOptions {
   filePath?: string
 }
 
 export const parseForESLint = (
   text: string,
   _options?: TextParserOptions,
-): Linter.ESLintParseResult => {
+): TSESLint.Parser.ParseResult => {
   const lines = text.split('\n')
   return {
     ast: {
+      // @ts-expect-error -- bad ts enum
       type: 'Program',
       sourceType: 'module',
       comments: [],
@@ -39,5 +40,7 @@ export const parseForESLint = (
 }
 
 /* istanbul ignore next */
-export const parse = (text: string, options?: TextParserOptions) =>
-  parseForESLint(text, options).ast
+export const parse = (
+  text: string,
+  options?: TextParserOptions,
+): TSESTree.Program => parseForESLint(text, options).ast

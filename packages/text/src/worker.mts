@@ -1,15 +1,15 @@
 import path from 'node:path'
 
 import { loadConfig } from '@textlint/config-loader'
-import type { TextlintResult, TextlintFixResult } from '@textlint/kernel'
-import { cosmiconfig } from 'cosmiconfig'
-import type { CosmiconfigResult } from 'cosmiconfig'
-import { loadEsmModule, loadModule, requirePkg } from 'eslint-plugin-utils'
+import type { TextlintFixResult, TextlintResult } from '@textlint/kernel'
+import { loadModule, requirePkg } from 'eslint-plugin-utils'
+import { lilconfig, type LilconfigResult } from 'lilconfig'
 import type { Root } from 'nlcst'
 import retextStringify from 'retext-stringify'
 import { extractProperties, runAsWorker } from 'synckit'
 import { createLinter, loadTextlintrc } from 'textlint'
 import { unified, type Plugin, type Processor } from 'unified'
+import { VFile } from 'vfile'
 import type { VFileMessage } from 'vfile-message'
 
 import { arrayify } from './helpers.js'
@@ -20,7 +20,7 @@ import type {
   WorkerResult,
 } from './types.js'
 
-const explorer = cosmiconfig('retext', {
+const explorer = lilconfig('retext', {
   packageProp: 'retextConfig',
   loaders: {
     '.js': loadModule,
@@ -44,7 +44,7 @@ export const getRetextProcessor = async (
     return cachedProcessor
   }
 
-  const result: CosmiconfigResult = ignoreRetextConfig
+  const result: LilconfigResult = ignoreRetextConfig
     ? null
     : await explorer.search(searchFrom)
 
@@ -58,7 +58,7 @@ export const getRetextProcessor = async (
 
   if (result) {
     const { plugins = [], settings } =
-      // type-coverage:ignore-next-line -- cosmiconfig's typings issue
+      // type-coverage:ignore-next-line -- lilconfig's typings issue
       (result.config || {}) as Partial<UnifiedConfig>
 
     const reducedProcessor = await plugins.reduce(
@@ -111,7 +111,6 @@ runAsWorker(
       case 'retext': {
         const processor = await getRetextProcessor(filename, ignoreRetextConfig)
 
-        const { VFile } = await loadEsmModule<typeof import('vfile')>('vfile')
         const file = new VFile({
           value: text,
           path: filename,
@@ -130,7 +129,7 @@ runAsWorker(
         }
       }
       case 'textlint': {
-        let textlint: ReturnType<typeof createLinter>
+        let textlint: TextLinter
 
         if (textlintCache.has(filename)) {
           textlint = textlintCache.get(filename)!
@@ -148,9 +147,10 @@ runAsWorker(
           textlintCache.set(filename, textlint)
         }
 
-        const result: TextlintFixResult | TextlintResult = await textlint[
-          fix ? 'fixText' : 'lintText'
-        ](text, path.extname(filename))
+        const result = await textlint[fix ? 'fixText' : 'lintText'](
+          text,
+          filename,
+        )
         return {
           messages: result.messages,
           content: isTextlintFixResult(result) ? result.output : text,
