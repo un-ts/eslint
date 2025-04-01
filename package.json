@@ -40,7 +40,7 @@
     "@commitlint/cli": "^19.8.0",
     "@markuplint/rule-textlint": "^4.7.18",
     "@mdx-js/rollup": "^3.1.0",
-    "@pkgr/rollup": "^6.0.0",
+    "@pkgr/rollup": "^6.0.1",
     "@textlint/textlint-plugin-markdown": "^14.4.2",
     "@textlint/textlint-plugin-text": "^14.4.2",
     "@types/htmlhint": "^1.1.5",
