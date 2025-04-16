@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react-enhanced",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "An incredible ESLint plugin for @react-enhanced",
   "repository": "git+https://github.com/un-ts/eslint.git",

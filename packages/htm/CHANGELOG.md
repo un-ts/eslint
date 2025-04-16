@@ -1,5 +1,11 @@
 # eslint-plugin-htm
 
+## 1.0.1
+
+### Patch Changes
+
+- [#137](https://github.com/un-ts/eslint/pull/137) [`c8ffdb0`](https://github.com/un-ts/eslint/commit/c8ffdb04b0992c9d3f7389dab22b14feb7ef8ab5) Thanks [@JounQin](https://github.com/JounQin)! - fix: compatible with older ESLint versions
+
 ## 1.0.0
 
 ### Major Changes
