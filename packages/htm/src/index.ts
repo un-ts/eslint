@@ -1,5 +1,5 @@
 import type { TSESLint } from '@typescript-eslint/utils'
-import { registerJsonMessageHandler, processors } from 'eslint-plugin-utils'
+import { registerJsonMessageHandler, jsonMessage } from 'eslint-plugin-utils'
 import type { Hint } from 'htmlhint/types.js'
 
 import * as configs_ from './configs.js'
@@ -7,21 +7,14 @@ import * as meta from './meta.js'
 import * as parser from './parser.js'
 import * as rules from './rules/index.js'
 
-const htm: TSESLint.Linter.Plugin = {
-  meta,
-  rules,
-  processors,
-}
+const htm: TSESLint.Linter.Plugin = { meta, rules }
 
 const flatBase: TSESLint.FlatConfig.Config = {
   name: 'htm/flat-base',
   files: ['**/*.html'],
-  plugins: {
-    htm,
-  },
-  languageOptions: {
-    parser,
-  },
+  plugins: { htm },
+  processor: jsonMessage,
+  languageOptions: { parser },
 }
 
 const flatRecommended: TSESLint.FlatConfig.Config = {

@@ -1,0 +1,15 @@
+{
+  // used by ESLint
+  "extends": "./tsconfig.lib",
+  "compilerOptions": {
+    "paths": {
+      "eslint-plugin-htm": ["./packages/htm/src/index.ts"],
+      "eslint-plugin-markup": ["./packages/markup/src/index.ts"],
+      "eslint-plugin-react-enhanced": [
+        "./packages/react-enhanced/src/index.ts"
+      ],
+      "eslint-plugin-text": ["./packages/text/src/index.ts"],
+      "eslint-plugin-utils": ["./packages/utils/src/index.ts"]
+    }
+  }
+}

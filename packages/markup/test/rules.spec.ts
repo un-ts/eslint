@@ -8,7 +8,7 @@ const tester = new RuleTester()
 
 const options: Pick<ValidTestCase<[]>, 'filename' | 'languageOptions'> = {
   languageOptions: { parser },
-  filename: path.join(__dirname, 'fixtures/basic.html'),
+  filename: path.resolve(import.meta.dirname, 'fixtures/basic.html'),
 }
 
 tester.run('markup', rules.markup, {
@@ -102,6 +102,6 @@ tester.run('markup', rules.markup, {
 })
 
 // trick
-test('test', () => {
+test('trick test', () => {
   expect(true).toBeTruthy()
 })

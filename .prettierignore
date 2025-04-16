@@ -1,6 +1,6 @@
+.type-coverage
 .yarn
 coverage
 dist
 lib
-/auto-imports.d.ts
 /packages/**/test/fixtures

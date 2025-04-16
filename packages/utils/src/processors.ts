@@ -1,9 +1,17 @@
 import type { TSESLint } from '@typescript-eslint/utils'
 
 import { jsonMessageHandlers } from './helpers.js'
+import { version } from './meta.js'
 
 export const jsonMessage: TSESLint.Processor.ProcessorModule = {
+  meta: {
+    name: 'utils:json-message',
+    version,
+  },
   supportsAutofix: true,
+  preprocess(text) {
+    return [text]
+  },
   postprocess(messagesList) {
     return messagesList.flatMap(messages =>
       messages.map(lintMessage => {

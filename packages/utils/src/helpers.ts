@@ -1,32 +1,24 @@
-import { createRequire } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
+import { cjsRequire } from '@pkgr/core'
 import type { TSESLint } from '@typescript-eslint/utils'
 
-/* istanbul ignore next */
-export const loadEsmModule = <T>(modulePath: URL | string): Promise<T> =>
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval, @typescript-eslint/no-unsafe-call
-  new Function('modulePath', `return import(modulePath);`)(
-    modulePath,
-  ) as Promise<T>
-
-const cjsRequire =
-  typeof require === 'undefined' ? createRequire(import.meta.url) : require
-
-const interceptDefault = async <T>(promise: Promise<{ default: T }>) =>
-  promise.then(({ default: value }) => value)
+const interceptDefault = async <T extends object>(
+  promise: Promise<T | { default: T }>,
+) => promise.then(value => ('default' in value ? value.default : value))
 
 /**
- * ! copied from https://github.com/just-jeb/angular-builders/blob/master/packages/custom-webpack/src/utils.ts#L53-L67
+ * ! copied from
+ * https://github.com/just-jeb/angular-builders/blob/master/packages/custom-webpack/src/utils.ts#L53-L67
  *
- * This uses a dynamic import to load a module which may be ESM.
- * CommonJS code can load ESM code via a dynamic import. Unfortunately, TypeScript
- * will currently, unconditionally downlevel dynamic import into a require call.
- * require calls cannot load ESM code and will result in a runtime error. To workaround
- * this, a Function constructor is used to prevent TypeScript from changing the dynamic import.
- * Once TypeScript provides support for keeping the dynamic import this workaround can
- * be dropped.
+ * This uses a dynamic import to load a module which may be ESM. CommonJS code
+ * can load ESM code via a dynamic import. Unfortunately, TypeScript will
+ * currently, unconditionally downlevel dynamic import into a require call.
+ * require calls cannot load ESM code and will result in a runtime error. To
+ * workaround this, a Function constructor is used to prevent TypeScript from
+ * changing the dynamic import. Once TypeScript provides support for keeping the
+ * dynamic import this workaround can be dropped.
  *
  * @param modulePath The path of the module to load.
  * @returns A Promise that resolves to the dynamically imported module.
@@ -34,7 +26,8 @@ const interceptDefault = async <T>(promise: Promise<{ default: T }>) =>
 
 /**
  * Loads JSON, CJS and ESM modules based on extension
- * @param modulePathname pathname or url of the module
+ *
+ * @param modulePathname Pathname or url of the module
  * @returns
  */
 export function loadModule<T>(modulePathname: URL | string): Promise<T>
@@ -49,23 +42,23 @@ export function loadModule<T>(modulePathname: URL | string): Promise<T> | T {
       : fileURLToPath(modulePathname)
 
   const getEsModulePath = () =>
-    path.isAbsolute(modulePath) ? pathToFileURL(modulePath) : modulePath
+    path.isAbsolute(modulePath)
+      ? pathToFileURL(modulePath).toString()
+      : modulePath
 
   switch (path.extname(modulePath)) {
     /* istanbul ignore next */
     case '.mjs': {
-      return interceptDefault(loadEsmModule(getEsModulePath()))
+      return interceptDefault(import(getEsModulePath()))
     }
     /* istanbul ignore next */
     case '.cjs': {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return cjsRequire(modulePath)
     }
     default: {
       // The file could be either CommonJS or ESM.
       // CommonJS is tried first then ESM if loading fails.
       try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return cjsRequire(modulePath)
       } catch (err) {
         /* istanbul ignore if */
@@ -77,7 +70,7 @@ export function loadModule<T>(modulePathname: URL | string): Promise<T> | T {
           // Load the ESM configuration file using the TypeScript dynamic import workaround.
           // Once TypeScript provides support for keeping the dynamic import this workaround can be
           // changed to a direct dynamic import.
-          return interceptDefault(loadEsmModule(getEsModulePath()))
+          return interceptDefault(import(getEsModulePath()))
         }
 
         throw err

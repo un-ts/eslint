@@ -1,6 +1,9 @@
-import { loadModule } from 'eslint-plugin-utils'
+import path from 'node:path'
 
-export const { name, version } = loadModule<
-  { name: string; version: string },
-  true
->(new URL('../package.json', import.meta.url))
+import { cjsRequire } from '@pkgr/core'
+
+import { _dirname } from './constants.js'
+
+export const { name, version } = cjsRequire<{ name: string; version: string }>(
+  path.resolve(_dirname, '../package.json'),
+)

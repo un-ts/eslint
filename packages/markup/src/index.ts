@@ -1,27 +1,20 @@
 import type { Violation } from '@markuplint/ml-config'
 import type { TSESLint } from '@typescript-eslint/utils'
-import { processors, registerJsonMessageHandler } from 'eslint-plugin-utils'
+import { jsonMessage, registerJsonMessageHandler } from 'eslint-plugin-utils'
 
 import * as configs_ from './configs.js'
 import * as meta from './meta.js'
 import * as parser from './parser.js'
 import * as rules from './rules/index.js'
 
-const markup: TSESLint.Linter.Plugin = {
-  meta,
-  rules,
-  processors,
-}
+const markup: TSESLint.Linter.Plugin = { meta, rules }
 
 const flatBase: TSESLint.FlatConfig.Config = {
   name: 'markup/flat-base',
   files: ['**/*.html'],
-  plugins: {
-    markup,
-  },
-  languageOptions: {
-    parser,
-  },
+  plugins: { markup },
+  processor: jsonMessage,
+  languageOptions: { parser },
 }
 
 const flatRecommended: TSESLint.FlatConfig.Config = {
