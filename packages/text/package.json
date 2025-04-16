@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-text",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "An incredible ESLint plugin for retext or textlint",
   "repository": "git+https://github.com/un-ts/eslint.git",
