@@ -1,6 +1,6 @@
 import type { TextlintMessage } from '@textlint/kernel'
 import type { TSESLint } from '@typescript-eslint/utils'
-import { processors, registerJsonMessageHandler } from 'eslint-plugin-utils'
+import { jsonMessage, registerJsonMessageHandler } from 'eslint-plugin-utils'
 import type { VFileMessage } from 'vfile-message'
 
 import * as configs_ from './configs.js'
@@ -8,21 +8,16 @@ import * as meta from './meta.js'
 import * as parser from './parser.js'
 import * as rules from './rules/index.js'
 
-export const text: TSESLint.Linter.Plugin = {
-  meta,
-  rules,
-  processors,
-}
+export * from './helpers.js'
+
+export const text: TSESLint.Linter.Plugin = { meta, rules }
 
 const flatBase: TSESLint.FlatConfig.Config = {
   name: 'text/flat-base',
   files: ['**/*'],
-  plugins: {
-    text,
-  },
-  languageOptions: {
-    parser,
-  },
+  plugins: { text },
+  processor: jsonMessage,
+  languageOptions: { parser },
   rules: configs_.recommended.rules,
 }
 

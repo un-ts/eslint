@@ -1,16 +1,12 @@
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 
 import type { Target } from '@markuplint/file-resolver'
 import type { Violation } from '@markuplint/ml-config'
 import { createSyncFn } from 'synckit'
 
-const _dirname =
-  typeof __dirname === 'undefined'
-    ? path.dirname(fileURLToPath(import.meta.url))
-    : __dirname
+import { _dirname } from './constants.js'
 
-const workerPath = path.resolve(_dirname, './worker.mjs')
+const workerPath = path.resolve(_dirname, './worker.js')
 
 // call `createSyncFn` lazily for performance, it is already cached inside, related #31
 export const sync = {

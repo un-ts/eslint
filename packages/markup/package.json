@@ -5,21 +5,27 @@
   "description": "An incredible ESLint plugin for all markup languages based on markuplint",
   "repository": "git+https://github.com/un-ts/eslint.git",
   "homepage": "https://github.com/un-ts/eslint/blob/main/packages/markup",
-  "author": "JounQin (https://www.1stG.me) <admin@1stg.me>",
-  "funding": "https://opencollective.com/unts",
+  "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
+  "funding": "https://opencollective.com/eslint-plugins",
   "license": "MIT",
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
   "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
+  "types": "./index.d.cts",
+  "module": "./index.d.cts",
   "exports": {
-    "types": "./lib/index.d.ts",
-    "require": "./lib/index.cjs",
-    "default": "./lib/index.js"
+    "import": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "require": {
+      "types": "./index.d.cts",
+      "default": "./lib/index.cjs"
+    }
   },
-  "types": "./lib/index.d.ts",
   "files": [
+    "index.d.cts",
     "lib"
   ],
   "keywords": [
@@ -36,7 +42,7 @@
   ],
   "peerDependencies": {
     "@typescript-eslint/utils": ">=7.0.0",
-    "eslint": ">=9.22.0"
+    "eslint": ">=5.0.0"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/utils": {
@@ -44,17 +50,16 @@
     }
   },
   "dependencies": {
-    "cosmiconfig": "^9.0.0",
+    "@pkgr/core": "^0.2.4",
     "eslint-plugin-utils": "^0.4.0",
-    "markuplint": "^4.11.8",
-    "synckit": "^0.9.2",
-    "tslib": "^2.8.1"
+    "markuplint": "^4.12.0",
+    "synckit": "^0.11.4"
   },
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": [
-    "./lib/es*.js",
+    "./lib/index.cjs",
     "./lib/index.js"
   ]
 }

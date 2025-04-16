@@ -5,9 +5,11 @@ exports[`fixtures > basic.html 1`] = `
   {
     "column": 1,
     "line": 1,
-    "message": "{"evidence":"<!--comment--><!DOCTYPE html>","message":"Doctype must be declared first.","rule":{"id":"doctype-first","description":"Doctype must be declared first.","link":"https://htmlhint.com/docs/user-guide/rules/doctype-first"}}",
+    "message": "Doctype must be declared first.
+evidence: <!--comment--><!DOCTYPE html>
+reference: https://htmlhint.com/docs/user-guide/rules/doctype-first",
     "nodeType": null,
-    "ruleId": "htm/html",
+    "ruleId": "htm/doctype-first",
     "severity": 1,
   },
 ]

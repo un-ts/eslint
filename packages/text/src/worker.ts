@@ -12,13 +12,13 @@ import { unified, type Plugin, type Processor } from 'unified'
 import { VFile } from 'vfile'
 import type { VFileMessage } from 'vfile-message'
 
-import { arrayify } from './helpers.js'
+import { arrayify } from './helpers.ts'
 import type {
   UnifiedConfig,
   UnifiedPlugin,
   WorkerOptions,
   WorkerResult,
-} from './types.js'
+} from './types.ts'
 
 const explorer = lilconfig('retext', {
   packageProp: 'retextConfig',

@@ -5,13 +5,14 @@ import { TSESLint } from '@typescript-eslint/utils'
 import { configs } from 'eslint-plugin-markup'
 
 const eslint = new TSESLint.ESLint({
+  baseConfig: [configs.flatRecommended],
   ignore: false,
-  overrideConfig: [configs.flatRecommended],
+  overrideConfigFile: true,
 })
 
 test('fixtures', async () => {
   const results = await eslint.lintFiles(
-    path.resolve(__dirname, 'fixtures/*.html'),
+    path.resolve(import.meta.dirname, 'fixtures/*.html'),
   )
   for (const { filePath, messages } of results) {
     expect(messages).toMatchSnapshot(path.basename(filePath))

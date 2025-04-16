@@ -10,17 +10,19 @@ concurrency:
 
 jobs:
   ci:
-    name: Lint and Test with Node.js ${{ matrix.node }}
+    name: Lint and Test with Node.js ${{ matrix.node }} on ${{ matrix.os }}
     strategy:
       matrix:
         node:
           - 18
           - 20
           - 22
+        os:
+          - macos-latest
+          - windows-latest
+          - ubuntu-latest
       fail-fast: false
-    env:
-      YARN_IGNORE_NODE: 1
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -37,10 +39,17 @@ jobs:
       - name: Build, Lint and Test
         run: yarn run-s build lint test typecov
         env:
-          EFF_NO_LINK_RULES: true
           PARSER_NO_WATCH: true
 
       - name: Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Run codacy-coverage-reporter
+        # bad Windows -- https://github.com/codacy/codacy-coverage-reporter-action/issues/91
+        if: ${{ !github.event.pull_request.head.repo.fork && matrix.os != 'windows-latest' }}
+        uses: codacy/codacy-coverage-reporter-action@89d6c85cfafaec52c72b6c5e8b2878d33104c699 # v1.3.0
+        continue-on-error: true
+        with:
+          api-token: ${{ secrets.CODACY_API_TOKEN }}

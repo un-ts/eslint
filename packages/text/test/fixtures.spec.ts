@@ -5,13 +5,14 @@ import { TSESLint } from '@typescript-eslint/utils'
 import { configs } from 'eslint-plugin-text'
 
 const eslint = new TSESLint.ESLint({
+  baseConfig: [{ ...configs.flatRecommended, files: ['**/*.{md,txt}'] }],
   ignore: false,
-  overrideConfig: [configs.flatRecommended],
+  overrideConfigFile: true,
 })
 
 test('fixtures', async () => {
   const results = await eslint.lintFiles(
-    path.resolve(__dirname, './fixtures/*.{md,txt}'),
+    path.resolve(import.meta.dirname, 'fixtures/*.{md,txt}'),
   )
   for (const { filePath, messages, output, source } of results) {
     const filename = path.basename(filePath)
