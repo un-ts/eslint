@@ -35,6 +35,8 @@
   },
   "devDependencies": {
     "@1stg/app-config": "^16.0.0",
+    "@1stg/eslint-config": "^11.1.0",
+    "@1stg/markuplint-config": "^5.1.0",
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
     "@commitlint/cli": "^21.0.0",
@@ -83,10 +85,8 @@
     "yarn-berry-deduplicate": "^7.0.0"
   },
   "resolutions": {
-    "@1stg/markuplint-config@npm:^5.0.0": "patch:@1stg/markuplint-config@npm%3A5.0.0#~/.yarn/patches/@1stg-markuplint-config-npm-5.0.0-c22cdf11e7.patch",
     "eslint-plugin-markup": "workspace:*",
     "eslint-plugin-utils": "workspace:*",
-    "markuplint-angular-parser": "^4.0.0",
     "pm-dedup-core": "^2.2.2"
   },
   "commitlint": {
