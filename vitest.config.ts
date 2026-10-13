@@ -11,10 +11,10 @@ export default defineConfig({
     globals: true,
     coverage: {
       enabled: true,
-      include: ['packages/*/src'],
+      include: ['packages/*/src/**/*.{ts,tsx}'],
       exclude: [
         // just a placeholder now
-        'packages/react-enhanced/src',
+        'packages/react-enhanced/src/**',
         // worker is not supported by vitest
         'packages/*/src/worker.ts',
       ],
