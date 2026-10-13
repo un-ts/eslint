@@ -1,17 +1,14 @@
-import tsconfigPaths from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-  plugins: [
-    tsconfigPaths({
-      projects: ['./tsconfig.eslint.json'],
-    }),
-  ],
+  tsconfig: 'tsconfig.eslint.json',
+  resolve: {
+    tsconfigPaths: true,
+  },
   test: {
     globals: true,
     coverage: {
       enabled: true,
-      include: ['packages/*/src/**/*.{ts,tsx}'],
       exclude: [
         // just a placeholder now
         'packages/react-enhanced/src/**',
