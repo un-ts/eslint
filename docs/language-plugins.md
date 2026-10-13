@@ -101,8 +101,22 @@ export default [
 - the stub parser and the JSON-message processor stop being load-bearing;
 - configuration becomes canonical (`language` instead of `parser`, which matters because
   `@1stg/eslint-config` also assigns `languageOptions.parser` to `.html` for Angular templates);
-- a `SourceCode` with a real traversal is the prerequisite for node-based reporting and for
-  honoring `<!-- eslint-disable -->`-style directives in markup files later.
+- the syntax tree ESLint sees is markuplint's own: the `SourceCode` holds the document its HTML
+  parser produced, which is what makes directives, and later node-level reporting, possible.
+
+Inline directives are the first thing the real tree makes possible, and they are worth being precise
+about:
+
+- `getDisableDirectives()` reads comments **out of the parsed document**, not out of the text. That
+  distinction is the point: only a parser knows that the same characters inside a `<script>` tag or
+  an attribute value are content, and a directive must not be read out of them.
+- What works today is the file-scoped form, `<!-- eslint-disable markup/markup -->`. It disables
+  everything the bridge reports, because the bridge reports everything under the single rule id
+  `markup/markup`.
+- What cannot work yet is anything narrower. `<!-- eslint-disable markup/require-doctype -->` has no
+  rule of that name to match, and a line-scoped directive cannot suppress a document-level violation
+  such as `require-doctype`, which markuplint always reports at 1:1. Both are consequences of the
+  single bridge rule, not of the language.
 
 ### 3.3 Costs and risks
 
