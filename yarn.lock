@@ -161,7 +161,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@1stg/markuplint-config@npm:^5.0.0":
+"@1stg/markuplint-config@npm:5.0.0":
   version: 5.0.0
   resolution: "@1stg/markuplint-config@npm:5.0.0"
   dependencies:
@@ -171,6 +171,19 @@ __metadata:
   peerDependencies:
     markuplint: ^5.0.0
   checksum: 10c0/5ee80edb28fa6b5cd60f1ea06eab6d83464faea5928e8bf4d13bf05e3f54c5dbf14f17f798080666bf2ca10cb7b30f38f4f8918c865a5cb1601311eb0a69f85d
+  languageName: node
+  linkType: hard
+
+"@1stg/markuplint-config@patch:@1stg/markuplint-config@npm%3A5.0.0#~/.yarn/patches/@1stg-markuplint-config-npm-5.0.0-c22cdf11e7.patch":
+  version: 5.0.0
+  resolution: "@1stg/markuplint-config@patch:@1stg/markuplint-config@npm%3A5.0.0#~/.yarn/patches/@1stg-markuplint-config-npm-5.0.0-c22cdf11e7.patch::version=5.0.0&hash=635ca9"
+  dependencies:
+    "@markuplint/vue-parser": "npm:^5.0.0"
+    "@markuplint/vue-spec": "npm:^5.0.0"
+    markuplint-angular-parser: "npm:^3.0.2"
+  peerDependencies:
+    markuplint: ^5.0.0
+  checksum: 10c0/c7df4f3e5eb414e8a2992cb0881027cbbe54202551f863329f1597e34e207327d40c1c59f4a799043cfcc04881bfe6def511560fd46f46191e3c241c1b2eac62
   languageName: node
   linkType: hard
 

@@ -42,11 +42,8 @@ jobs:
         id: changesets
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore: release package(s)'
           pr-title: 'chore: release package(s)'
           publish-script: yarn release
           version-script: yarn run version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # No NPM_TOKEN: Yarn exchanges the GitHub OIDC token for a short-lived npm token
-          # (trusted publishing), and npmPublishProvenance in .yarnrc.yml adds provenance.
