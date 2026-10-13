@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Incredible ESLint plugins, make ESLint greater",
   "repository": "git+https://github.com/un-ts/eslint.git",
-  "homepage": "https://eslint-plugins.vercel.app",
+  "homepage": "https://eslint.1stg.me",
   "author": "JounQin <admin@1stg.me> (https://www.1stG.me)",
   "license": "MIT",
   "private": true,
@@ -25,13 +25,12 @@
     "lint": "run-p 'lint:*'",
     "lint:es": "eslint . --cache --max-warnings 10",
     "lint:style": "stylelint . --cache",
-    "lint:ts": "tsc -b --noEmit",
+    "lint:ts": "tsc --noEmit -p tsconfig.eslint.json",
     "prepare": "simple-git-hooks && yarn-berry-deduplicate || exit 0",
     "release": "changeset publish",
     "serve": "yarn docs:preview",
     "test": "vitest run --coverage",
     "typecov": "type-coverage",
-    "vercel-build": "yarn docs:build",
     "version": "changeset version && yarn --no-immutable"
   },
   "devDependencies": {
@@ -39,7 +38,6 @@
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
     "@commitlint/cli": "^21.0.0",
-    "@markuplint/rule-textlint": "^4.7.19",
     "@mdx-js/rollup": "^3.1.0",
     "@oxc-node/core": "^0.1.0",
     "@pkgr/rollup": "^7.0.0",
@@ -53,6 +51,7 @@
     "@types/react-dom": "^19.1.2",
     "@types/web": "^0.0.358",
     "@typescript-eslint/rule-tester": "^8.30.1",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "@vitejs/plugin-react-swc": "^4.0.0",
     "@vitest/coverage-istanbul": "^5.0.0",
     "@vitest/eslint-plugin": "^1.1.42",
@@ -77,7 +76,7 @@
     "textlint-rule-max-comma": "^4.0.0",
     "textlint-rule-no-zero-width-spaces": "^1.0.1",
     "type-coverage": "^2.29.7",
-    "typescript": "^7.0.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
     "vite": "^8.0.0",
     "vite-tsconfig-paths": "^6.0.0",
     "vitest": "^5.0.0",
@@ -86,7 +85,8 @@
   "resolutions": {
     "eslint-plugin-markup": "workspace:*",
     "eslint-plugin-utils": "workspace:*",
-    "prettier": "^3.5.3"
+    "markuplint-angular-parser": "^4.0.0",
+    "pm-dedup-core": "^2.2.2"
   },
   "commitlint": {
     "extends": "@1stg"

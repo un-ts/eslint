@@ -27,7 +27,7 @@ export const retext: TSESLint.RuleModule<never> = {
         for (const { reason, ruleId, fatal, line, column, place } of messages) {
           // https://github.com/remarkjs/remark-lint/issues/65#issuecomment-220800231
           /* istanbul ignore next */
-          // eslint-disable-next-line sonarjs/no-nested-conditional
+          // eslint-disable-next-line sonarjs/no-nested-conditional, unicorn-x/no-nested-ternary
           const severity = fatal ? 2 : fatal == null ? 0 : 1
           /* istanbul ignore if */
           if (!severity) {

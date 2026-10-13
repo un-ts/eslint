@@ -1,16 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`fixtures > basic.html 1`] = `
-[
-  {
-    "column": 1,
-    "line": 1,
-    "message": "Doctype must be declared first.
-evidence: <!--comment--><!DOCTYPE html>
-reference: https://htmlhint.com/docs/user-guide/rules/doctype-first",
-    "nodeType": null,
-    "ruleId": "htm/doctype-first",
-    "severity": 1,
-  },
-]
-`;
+exports[`fixtures > basic.html 1`] = `[]`;

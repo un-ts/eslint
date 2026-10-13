@@ -5,7 +5,7 @@
 .*cache
 *.tsbuildinfo
 .type-coverage
-.vercel
+.wrangler
 coverage
 dist
 lib

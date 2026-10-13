@@ -1,6 +1,8 @@
 .type-coverage
+.wrangler
 .yarn
 coverage
 dist
 lib
 /packages/**/test/fixtures
+/public/_redirects
