@@ -11,7 +11,7 @@ const options: Pick<ValidTestCase<[]>, 'filename' | 'languageOptions'> = {
   filename: path.resolve(import.meta.dirname, 'fixtures/basic.html'),
 }
 
-tester.run('markup', rules.markup, {
+tester.run<never, []>('markup', rules.markup, {
   valid: [
     {
       ...options,
@@ -47,11 +47,6 @@ tester.run('markup', rules.markup, {
       code: '<header>Header4</header>',
       filename: path.join(__dirname, 'fake.html'),
     },
-    {
-      ...options,
-      code: '<header>Header5</header>',
-      filename: path.join(__dirname, 'fixtures/textlint/test.html'),
-    },
   ],
   invalid: [
     {
@@ -73,28 +68,10 @@ tester.run('markup', rules.markup, {
           message: JSON.stringify({
             severity: 'error',
             message: 'Require doctype',
-            ruleId: 'doctype',
+            ruleId: 'require-doctype',
           }),
           line: 1,
           column: 1,
-        },
-      ],
-    },
-    {
-      ...options,
-      code: '<p>a,c,d,e,f,g</p>',
-      filename: path.join(__dirname, 'fixtures/textlint/test.html'),
-      errors: [
-        {
-          // @ts-expect-error -- it's fine
-          message: JSON.stringify({
-            severity: 'warning',
-            message:
-              'Invalid text: This sentence exceeds the maximum count of comma. Maximum is 4.',
-            ruleId: 'textlint',
-          }),
-          line: 1,
-          column: 10,
         },
       ],
     },

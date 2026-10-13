@@ -124,7 +124,9 @@ runAsWorker(
           }
         }
         return {
-          messages: file.messages.map(message => extractProperties(message)),
+          messages: file.messages.map(
+            message => extractProperties(message) as VFileMessage,
+          ),
           content: file.toString(),
         }
       }

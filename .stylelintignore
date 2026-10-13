@@ -2,6 +2,7 @@ coverage
 dist
 lib
 LICENSE
+public/_redirects
 *.cts
 *.js
 *.json

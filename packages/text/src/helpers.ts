@@ -5,13 +5,13 @@ export const arrayify = <
   ...args: T[]
 ) =>
   args.reduce<R[]>((arr, curr) => {
+    if (curr == null) {
+      return arr
+    }
     arr.push(
       ...(Array.isArray(curr)
-        ? curr.filter(it => it != null)
-        : // eslint-disable-next-line sonarjs/no-nested-conditional
-          curr == null
-          ? []
-          : [curr]),
+        ? (curr as R[]).filter((it): it is R => it != null)
+        : [curr as unknown as R]),
     )
     return arr
   }, [])

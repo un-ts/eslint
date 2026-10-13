@@ -6,8 +6,7 @@ exports[`fixtures > doctype.html 1`] = `
     "column": 1,
     "line": 1,
     "message": "Require doctype",
-    "nodeType": null,
-    "ruleId": "markup/doctype",
+    "ruleId": "markup/require-doctype",
     "severity": 2,
   },
 ]
@@ -21,8 +20,7 @@ exports[`fixtures > id-duplication.html 1`] = `
     "column": 1,
     "line": 1,
     "message": "Require doctype",
-    "nodeType": null,
-    "ruleId": "markup/doctype",
+    "ruleId": "markup/require-doctype",
     "severity": 2,
   },
 ]

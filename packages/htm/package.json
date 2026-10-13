@@ -9,7 +9,7 @@
   "funding": "https://opencollective.com/eslint-plugins",
   "license": "MIT",
   "engines": {
-    "node": "^14.18.0 || >=16.0.0"
+    "node": ">=18"
   },
   "main": "./lib/index.cjs",
   "types": "./index.d.cts",
@@ -50,7 +50,7 @@
     }
   },
   "dependencies": {
-    "@pkgr/core": "^0.2.4",
+    "@pkgr/core": "^0.3.0",
     "eslint-plugin-utils": "^0.4.0",
     "htmlhint": "^1.1.4"
   },

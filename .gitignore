@@ -1,11 +1,12 @@
 .yarn/*
+!.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 *.log
 .*cache
 *.tsbuildinfo
 .type-coverage
-.vercel
+.wrangler
 coverage
 dist
 lib
