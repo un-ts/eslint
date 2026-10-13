@@ -1,5 +1,16 @@
 # eslint-plugin-text
 
+## 2.0.0
+
+### Major Changes
+
+- [#141](https://github.com/un-ts/eslint/pull/141) [`d153069`](https://github.com/un-ts/eslint/commit/d153069c9f9c1c968dc2c4dbb011b66f0360fd8b) Thanks [@renovate](https://github.com/apps/renovate)! - fix(deps): update all dependencies
+
+  - `eslint-plugin-htm`: require Node.js `>=18` (from `htmlhint`)
+  - `eslint-plugin-markup`: migrate to markuplint v5, which removes the `@markuplint/rule-textlint` plugin, and require Node.js `>=24`
+  - `eslint-plugin-text`: migrate to textlint v15, require Node.js `>=20.18.0`, and map its `info` severity to `warn`
+  - adapt to `@pkgr/core` v0.3 where `EVAL_FILENAMES` is no longer exported
+
 ## 1.0.1
 
 ### Patch Changes
