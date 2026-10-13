@@ -50,14 +50,12 @@
     }
   },
   "dependencies": {
+    "@eslint/core": "^1.2.1",
     "@eslint/plugin-kit": "^0.7.3",
     "@pkgr/core": "^0.3.0",
     "eslint-plugin-utils": "^0.4.0",
     "markuplint": "^5.0.0",
     "synckit": "^0.12.0"
-  },
-  "devDependencies": {
-    "@eslint/core": "^1.2.1"
   },
   "publishConfig": {
     "access": "public"
