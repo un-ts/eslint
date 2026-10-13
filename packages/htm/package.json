@@ -9,7 +9,7 @@
   "funding": "https://opencollective.com/eslint-plugins",
   "license": "MIT",
   "engines": {
-    "node": "^14.18.0 || >=16.0.0"
+    "node": ">=18"
   },
   "main": "./lib/index.cjs",
   "types": "./index.d.cts",
