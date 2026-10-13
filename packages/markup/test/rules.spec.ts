@@ -75,6 +75,26 @@ tester.run<never, []>('markup', rules.markup, {
         },
       ],
     },
+    {
+      // `MLEngine` skips any file whose extension is unmatched by the resolved
+      // config unless `ignoreExt` is passed, which would silently disable
+      // linting for virtual file names crafted by processors
+      ...options,
+      code: '<html><head></head><body></body></html>',
+      filename: path.resolve(import.meta.dirname, 'fixtures/basic.xyz'),
+      errors: [
+        {
+          // @ts-expect-error -- it's fine
+          message: JSON.stringify({
+            severity: 'error',
+            message: 'Require doctype',
+            ruleId: 'require-doctype',
+          }),
+          line: 1,
+          column: 1,
+        },
+      ],
+    },
   ],
 })
 
