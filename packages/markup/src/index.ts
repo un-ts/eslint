@@ -10,11 +10,20 @@ import * as rules from './rules/index.js'
 
 const languages = { html }
 
-const markup = {
+/**
+ * `languages` is part of ESLint's plugin contract, but neither
+ * `@typescript-eslint/utils`' `Linter.Plugin` nor its `FlatConfig.Plugin` declares it yet, so it is
+ * added here rather than cast away.
+ */
+interface PluginWithLanguages extends TSESLint.Linter.Plugin {
+  languages: typeof languages
+}
+
+const markup: PluginWithLanguages = {
   meta,
   languages,
   rules,
-} as unknown as TSESLint.Linter.Plugin
+}
 
 const flatBase: TSESLint.FlatConfig.Config = {
   name: 'markup/flat-base',
