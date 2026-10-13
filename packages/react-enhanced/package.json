@@ -40,7 +40,7 @@
     "eslint": ">=5.0.0"
   },
   "dependencies": {
-    "@pkgr/core": "^0.2.4"
+    "@pkgr/core": "^0.3.0"
   },
   "publishConfig": {
     "access": "public"
