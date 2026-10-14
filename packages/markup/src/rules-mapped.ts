@@ -4,8 +4,8 @@ import type { TSESLint } from '@typescript-eslint/utils'
 import { createSyncFn } from 'synckit'
 
 import { _dirname } from './constants.js'
-import { MARKUPLINT_RULE_NAMES } from './generated-rules.js'
 import type { MarkupPassOptions, MarkupPassResult } from './pass.js'
+import { MARKUPLINT_RULE_NAMES } from './rule-names.js'
 
 /**
  * markuplint runs every rule it is given in one pass over one document, so the plugin reports from

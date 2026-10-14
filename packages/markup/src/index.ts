@@ -62,12 +62,12 @@ const flatRecommendedLanguage: TSESLint.FlatConfig.Config = {
 }
 
 export { html, languages, mappedRules, meta, parser, rules }
-export { MARKUPLINT_RULE_NAMES } from './generated-rules.js'
 export {
   HTML_LANGUAGE_NAME,
   MarkupLanguage,
   MarkupSourceCode,
 } from './language.js'
+export { MARKUPLINT_RULE_NAMES } from './rule-names.js'
 
 export const configs = {
   ...configs_,
