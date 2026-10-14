@@ -177,9 +177,24 @@ model, so it is worth stating plainly rather than discovering later:
   `no-disallowed-attr`, `no-invalid-attr-value` and friends - are exactly the ones ESLint can
   address, because `markup/<rule>` only has somewhere to point when the name has no group prefix.
 
-The remaining work is to make the mapped rules the only model, decide what happens to the presets at
-that point, and fold the result into the recommended configs. That is the breaking part of the
-release.
+**The presets cannot be flattened without giving up parity.** `markuplint:recommended` reaches
+the same rule through several named groups, and markuplint reports it once per group: a fixture with
+a duplicated `id` produces three `no-duplicate-id` reports from the preset and one when the rule is
+enabled directly as `markup/no-duplicate-id`. Turning the groups into 94 flat ESLint rules would
+therefore change what is reported, not just how it is spelled. What parity requires and what
+flattening would produce are different outputs; the choice is between the two, not a matter of
+preference.
+
+**Decision, and what 3.0 still owes.** Both models stay, with the bridge as the default:
+
+- `configs.flatRecommended*` keep using `markup/markup`, so every existing config keeps the presets,
+  the named groups and `.markuplintrc` exactly as before.
+- The mapped rules are opt-in: a config that names `markup/<rule>` gets per-rule severity and
+  per-rule directives, and pays for the rules it names.
+- 3.0 owes a decision on whether the mapped model should learn to carry the presets - by keeping a
+  rule's group context rather than flattening it - or whether the bridge stays the way to use them.
+  That is the breaking part of the release, and it is not worth guessing at before someone wants
+  per-rule control of a rule that only a group currently enables.
 
 ## 4. `eslint-plugin-style` and stylelint
 
