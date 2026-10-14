@@ -12,11 +12,6 @@ const eslint = new TSESLint.ESLint({
 
 const filename = path.resolve(import.meta.dirname, 'fixtures/language.html')
 
-const lint = async (code: string) => {
-  const [result] = await eslint.lintText(code, { filePath: filename })
-  return result.messages
-}
-
 test('exposes the markup language under the html name', () => {
   expect(Object.keys(languages)).toEqual([HTML_LANGUAGE_NAME])
 })
@@ -91,8 +86,8 @@ test('traverses a Document node, not a Program one', async () => {
 })
 
 test('accepts valid markup through the language', async () => {
-  expect(
-    await lint(/* HTML */ `
+  const [result] = await eslint.lintText(
+    /* HTML */ `
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -103,62 +98,9 @@ test('accepts valid markup through the language', async () => {
           <h1>Any Page</h1>
         </body>
       </html>
-    `),
-  ).toEqual([])
-})
+    `,
+    { filePath: filename },
+  )
 
-describe('inline directives in HTML comments', () => {
-  const invalid = '<html><head></head><body></body></html>'
-
-  test('suppresses everything the named rule reports', async () => {
-    const messages = await lint(
-      `<!-- eslint-disable markup/markup -->\n${invalid}`,
-    )
-
-    expect(messages.filter(({ ruleId }) => ruleId === 'markup/markup')).toEqual(
-      [],
-    )
-  })
-
-  test('leaves a rule the comment does not name alone', async () => {
-    const messages = await lint(
-      `<!-- eslint-disable markup/something-else -->\n${invalid}`,
-    )
-
-    expect(messages.map(({ ruleId }) => ruleId)).toContain(
-      'markup/require-doctype',
-    )
-  })
-
-  test('ignores the same characters inside a script tag', async () => {
-    const messages = await lint(
-      `<script>const s = "<!-- eslint-disable markup/markup -->"</script>\n${invalid}`,
-    )
-
-    expect(messages.map(({ ruleId }) => ruleId)).toContain(
-      'markup/require-doctype',
-    )
-  })
-
-  test('reports an unused directive', async () => {
-    const reporting = new TSESLint.ESLint({
-      baseConfig: [
-        configs.flatRecommendedLanguage,
-        { linterOptions: { reportUnusedDisableDirectives: 'error' } },
-      ],
-      ignore: false,
-      overrideConfigFile: true,
-    })
-
-    const [result] = await reporting.lintText(
-      `<!-- eslint-disable markup/markup -->\n<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>t</title></head><body></body></html>`,
-      { filePath: filename },
-    )
-
-    expect(result.messages.map(({ message }) => message)).toEqual([
-      expect.stringContaining(
-        "Unused eslint-disable directive (no problems were reported from 'markup/markup')",
-      ),
-    ])
-  })
+  expect(result.messages).toEqual([])
 })

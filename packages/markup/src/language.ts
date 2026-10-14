@@ -1,14 +1,18 @@
-import type { File, FileProblem, Language, SourceLocation } from '@eslint/core'
-import {
-  type Directive,
-  TextSourceCodeBase,
-  VisitNodeStep,
-} from '@eslint/plugin-kit'
-import { parser as htmlParser } from '@markuplint/html-parser'
-import type { MLASTDocument } from '@markuplint/ml-ast'
+import type { File, Language, SourceLocation } from '@eslint/core'
+import { TextSourceCodeBase, VisitNodeStep } from '@eslint/plugin-kit'
 
-import { parseDirectives } from './directives.js'
-import type { MarkupSyntaxElement } from './syntax-element.js'
+/**
+ * The node a markup language file is rooted at.
+ *
+ * ESLint only needs one traversable node here: the syntax itself is evaluated by markuplint through
+ * `markup/markup`, so this tree exists to give that rule somewhere to report from rather than to
+ * model the document.
+ */
+export interface MarkupDocument {
+  type: 'Document'
+  range: [number, number]
+  loc: { start: SourceLocation['start']; end: SourceLocation['end'] }
+}
 
 /**
  * Markup carries no language options of its own; configuration lives in markuplint's own files.
@@ -20,55 +24,18 @@ export type MarkupLanguageOptions = Record<never, never>
  */
 export const HTML_LANGUAGE_NAME = 'html'
 
-export type {
-  MarkupPosition,
-  MarkupPositionMapper,
-  MarkupSyntaxElement,
-} from './syntax-element.js'
-
-/**
- * The node ESLint traverses a markup file from.
- *
- * The syntax itself is evaluated by markuplint through `markup/markup`, so this is the root the
- * bridge reports from; the parsed document travels alongside it as `MarkupParseResult.markuplint`.
- */
-export interface MarkupDocument {
-  type: 'Document'
-  range: [number, number]
-  loc: { start: SourceLocation['start']; end: SourceLocation['end'] }
-}
-
 /**
  * The `SourceCode` ESLint hands to rules for markup files.
  *
  * `TextSourceCodeBase` already implements everything ESLint requires apart from `traverse()` and
- * `getParent()`, and knows how to measure locations from the source text.
+ * `getParent()`, and understands the ESTree-style `loc` and `range` this language emits.
  */
 export class MarkupSourceCode extends TextSourceCodeBase<{
   LangOptions: MarkupLanguageOptions
   RootNode: MarkupDocument
-  SyntaxElementWithLoc: MarkupDocument | MarkupSyntaxElement
+  SyntaxElementWithLoc: MarkupDocument
   ConfigNode: never
 }> {
-  /**
-   * The document markuplint parsed, which is richer than the traversal root: it is what directives
-   * are read from, and what node-level rules will report from once they exist.
-   */
-  readonly markuplint: MLASTDocument
-
-  constructor({
-    text,
-    ast,
-    markuplint,
-  }: {
-    text: string
-    ast: MarkupDocument
-    markuplint: MLASTDocument
-  }) {
-    super({ text, ast })
-    this.markuplint = markuplint
-  }
-
   override getParent(): undefined {
     return undefined
   }
@@ -76,28 +43,14 @@ export class MarkupSourceCode extends TextSourceCodeBase<{
   override traverse(): Iterable<VisitNodeStep> {
     return [new VisitNodeStep({ target: this.ast, phase: 1, args: [this.ast] })]
   }
-
-  /**
-   * HTML comments are how a markup file carries `eslint-disable` directives, and `TextSourceCodeBase`
-   * knows nothing about comments, so ESLint has to be handed them.
-   *
-   * @returns the directives this file declares
-   */
-  getDisableDirectives(): {
-    directives: Directive[]
-    problems: FileProblem[]
-  } {
-    return parseDirectives(this.markuplint, this)
-  }
 }
 
 /**
  * The markup language, published as `markup/html`.
  *
- * `parse()` has to be synchronous - ESLint rejects a language parser that returns a thenable - and
- * markuplint's HTML parser is, so the syntax tree is the real one rather than a stub. Only a parser
- * can tell an HTML comment apart from the same characters inside a script tag or an attribute
- * value, which a directive must not be read out of.
+ * `parse()` stays deliberately cheap and synchronous: ESLint rejects a language parser that returns
+ * a thenable, and the parsing `markup/markup` needs happens inside markuplint's own worker rather
+ * than twice per file.
  */
 export class MarkupLanguage implements Language<{
   LangOptions: MarkupLanguageOptions
@@ -142,13 +95,7 @@ export class MarkupLanguage implements Language<{
     file: File,
     { ast }: { ast: MarkupDocument },
   ): MarkupSourceCode {
-    const text = file.body as string
-
-    return new MarkupSourceCode({
-      text,
-      ast,
-      markuplint: htmlParser.parse(text),
-    })
+    return new MarkupSourceCode({ text: file.body as string, ast })
   }
 }
 
