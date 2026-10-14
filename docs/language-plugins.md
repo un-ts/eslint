@@ -156,12 +156,30 @@ markuplint skips the rules its ruleset does not contain:
 
 Running everything and filtering afterwards is the last row; that is the design this one replaced.
 
-A file's own markuplint configuration keeps deciding presets, named rule groups, `nodeRules` and
-`childNodeRules`, and the rules ESLint asks for are enabled on top of it. What ESLint gains is the
+A file's own markuplint configuration still decides presets, named rule groups, `nodeRules` and
+`childNodeRules`, and ESLint decides which rules run and at what severity. What ESLint gains is the
 part markuplint cannot give it: real rule ids, so `<!-- eslint-disable-next-line markup/<rule> -->`,
-`--rule`, `meta.docs` and suppressions are per rule rather than all-or-nothing. The remaining work
-is to make the mapped rules the only model and fold them into the recommended configs, which is the
-breaking part of the release.
+`--rule`, `meta.docs` and suppressions are per rule rather than all-or-nothing.
+
+**Where the two models meet, and where they do not.** A rule can only be reported through an ESLint
+rule that exists and is enabled, so under the mapped model a rule that only `.markuplintrc` enables
+has nowhere to be reported and is not reported. That is a real behaviour difference from the bridge
+model, so it is worth stating plainly rather than discovering later:
+
+- **Rule selection moves to ESLint.** `'markup/attr-value-quotes': 'warn'` runs that rule at that
+  severity. A rule that is only in `.markuplintrc` does not run through the mapped rules.
+- **The markuplint presets cannot be flattened into ESLint rules.** `markuplint:recommended`
+  resolves to 94 entries, of which 89 are _named groups_ such as `html-standard/id-duplication`, and
+  a named group carries a selector scope and per-group options that an ESLint rule has no place for.
+  Turning them into `markup/<rule>` entries would quietly drop that scoping. They stay markuplint's
+  business, which is why the two models are exposed side by side rather than one replacing the other.
+- **A bare rule name is the seam.** `Ruleset` keys that are bare names - `no-unknown-attr`,
+  `no-disallowed-attr`, `no-invalid-attr-value` and friends - are exactly the ones ESLint can
+  address, because `markup/<rule>` only has somewhere to point when the name has no group prefix.
+
+The remaining work is to make the mapped rules the only model, decide what happens to the presets at
+that point, and fold the result into the recommended configs. That is the breaking part of the
+release.
 
 ## 4. `eslint-plugin-style` and stylelint
 
