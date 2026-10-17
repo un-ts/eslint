@@ -2,7 +2,7 @@ import path from 'node:path'
 
 import { cjsRequire } from '@pkgr/core'
 
-import { _dirname } from './constants.ts'
+import { _dirname } from './constants.js'
 
 export const { name, version } = cjsRequire<{ name: string; version: string }>(
   path.resolve(_dirname, '../package.json'),
