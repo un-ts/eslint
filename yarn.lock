@@ -8508,6 +8508,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "eslint-plugin-markup@workspace:packages/markup"
   dependencies:
+    "@eslint/core": "npm:^1.2.1"
+    "@eslint/plugin-kit": "npm:^0.7.3"
     "@pkgr/core": "npm:^0.3.0"
     eslint-plugin-utils: "npm:^0.4.0"
     markuplint: "npm:^5.0.0"

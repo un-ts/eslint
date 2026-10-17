@@ -22,40 +22,45 @@ export const markup: TSESLint.RuleModule<never> = {
     const runMarkuplint = (fix?: boolean) =>
       sync.markuplintSync(markuplintOptions, fix)
 
+    function reportViolations() {
+      const { violations } = runMarkuplint()
+
+      if (violations.length === 0) {
+        return
+      }
+
+      let fixed = 0
+
+      for (const { ruleId, severity, message, line, col } of violations) {
+        context.report({
+          // @ts-expect-error -- it's fine
+          message: JSON.stringify({ severity, message, ruleId }),
+          loc: {
+            line,
+            // ! eslint ast column is 0-indexed, but markuplint is 1-indexed
+            column: col - 1,
+          },
+          fix() {
+            if (fixed++) {
+              return null
+            }
+            const { fixedCode } = runMarkuplint(true)
+            return sourceText === fixedCode
+              ? null
+              : {
+                  range: [0, sourceText.length],
+                  text: fixedCode,
+                }
+          },
+        })
+      }
+    }
+
     return {
-      Program() {
-        const { violations } = runMarkuplint()
-
-        if (violations.length === 0) {
-          return
-        }
-
-        let fixed = 0
-
-        for (const { ruleId, severity, message, line, col } of violations) {
-          context.report({
-            // @ts-expect-error -- it's fine
-            message: JSON.stringify({ severity, message, ruleId }),
-            loc: {
-              line,
-              // ! eslint ast column is 0-indexed, but markuplint is 1-indexed
-              column: col - 1,
-            },
-            fix() {
-              if (fixed++) {
-                return null
-              }
-              const { fixedCode } = runMarkuplint(true)
-              return sourceText === fixedCode
-                ? null
-                : {
-                    range: [0, sourceText.length],
-                    text: fixedCode,
-                  }
-            },
-          })
-        }
-      },
+      // `Program` comes from the stub parser, `Document` from the `markup/html` language; only one
+      // of them exists per file, so a file is never reported twice.
+      Document: reportViolations,
+      Program: reportViolations,
     }
   },
 }
