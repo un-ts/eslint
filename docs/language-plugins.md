@@ -121,14 +121,80 @@ export default [
   `parser` and `flatRecommended` exported unchanged makes this an additive minor; flipping
   `flatRecommended` onto the language is a major.
 
-### 3.4 Not recommended: markuplint rules as ESLint rules
+### 3.4 Mapping the rules individually (implemented)
 
-Exposing `markup/no-empty-element` and friends as real ESLint rules with real `messageId`s and
-node locations means rebuilding markuplint's rule dispatch (`RuleInfo`, `document.currentRule`)
-and replacing its selector engine with esquery. markuplint rules are written against markuplint's
-own CSS-like selectors, and `matchesSelectorClass()` cannot paper over the difference, so the
-result would be two ASTs and two configuration systems to maintain. The payoff - per-rule
-`--fix-type` precision and node-level disable comments - does not cover that cost.
+An earlier revision of this document argued against exposing markuplint's rules as ESLint rules,
+on the grounds that it would mean rebuilding markuplint's rule dispatch and replacing its selector
+engine. That was wrong, and the argument it rested on was wrong in an instructive way: markuplint
+exposes `MLRule#verify(document)`, and the resolver that assembles the rules for a file
+(`resolveRules` from `@markuplint/file-resolver`) is public too. Nothing about dispatch or
+selectors has to be reimplemented.
+
+What is true is that the rules cannot be run **one at a time** and still agree with markuplint:
+
+| run                                           | agrees with `MLEngine`?                             |
+| --------------------------------------------- | --------------------------------------------------- |
+| per rule, on a fresh document                 | no - misses the repeats, reports rules that are off |
+| per rule, on a shared document                | no - same                                           |
+| all rules in one pass, resolved by markuplint | yes, report for report                              |
+
+markuplint runs its rules in one pass over one document, and a rule's own configuration is resolved
+during that pass, so calling `verify()` by hand cannot reproduce it. The plugin therefore runs that
+one pass and splits the result: every enabled ESLint rule registers itself while ESLint is creating
+rules, the first visitor runs the pass, and each rule reports its own slice. Parity is checked
+against `MLEngine` in `packages/markup/test/parity.spec.ts`.
+
+The cost of that shape follows what is enabled rather than the size of the rule set, because
+markuplint skips the rules its ruleset does not contain:
+
+| ruleset | `verify()` |
+| ------- | ---------- |
+| empty   | 0.2ms      |
+| 1 rule  | 3.3ms      |
+| 3 rules | 1.4ms      |
+| all 107 | 489ms      |
+
+Running everything and filtering afterwards is the last row; that is the design this one replaced.
+
+A file's own markuplint configuration still decides presets, named rule groups, `nodeRules` and
+`childNodeRules`, and ESLint decides which rules run and at what severity. What ESLint gains is the
+part markuplint cannot give it: real rule ids, so `<!-- eslint-disable-next-line markup/<rule> -->`,
+`--rule`, `meta.docs` and suppressions are per rule rather than all-or-nothing.
+
+**Where the two models meet, and where they do not.** A rule can only be reported through an ESLint
+rule that exists and is enabled, so under the mapped model a rule that only `.markuplintrc` enables
+has nowhere to be reported and is not reported. That is a real behaviour difference from the bridge
+model, so it is worth stating plainly rather than discovering later:
+
+- **Rule selection moves to ESLint.** `'markup/attr-value-quotes': 'warn'` runs that rule at that
+  severity. A rule that is only in `.markuplintrc` does not run through the mapped rules.
+- **The markuplint presets cannot be flattened into ESLint rules.** `markuplint:recommended`
+  resolves to 94 entries, of which 89 are _named groups_ such as `html-standard/id-duplication`, and
+  a named group carries a selector scope and per-group options that an ESLint rule has no place for.
+  Turning them into `markup/<rule>` entries would quietly drop that scoping. They stay markuplint's
+  business, which is why the two models are exposed side by side rather than one replacing the other.
+- **A bare rule name is the seam.** `Ruleset` keys that are bare names - `no-unknown-attr`,
+  `no-disallowed-attr`, `no-invalid-attr-value` and friends - are exactly the ones ESLint can
+  address, because `markup/<rule>` only has somewhere to point when the name has no group prefix.
+
+**The presets cannot be flattened without giving up parity.** `markuplint:recommended` reaches
+the same rule through several named groups, and markuplint reports it once per group: a fixture with
+a duplicated `id` produces three `no-duplicate-id` reports from the preset and one when the rule is
+enabled directly as `markup/no-duplicate-id`. Turning the groups into 94 flat ESLint rules would
+therefore change what is reported, not just how it is spelled. What parity requires and what
+flattening would produce are different outputs; the choice is between the two, not a matter of
+preference.
+
+**Decision, and what 3.0 still owes.** Both models stay, with the bridge as the default:
+
+- `configs.flatRecommended*` keep using `markup/markup`, so every existing config keeps the presets,
+  the named groups and `.markuplintrc` exactly as before.
+- The mapped rules are opt-in: a config that names `markup/<rule>` gets per-rule severity and
+  per-rule directives, and pays for the rules it names.
+- 3.0 owes a decision on whether the mapped model should learn to carry the presets - by keeping a
+  rule's group context rather than flattening it - or whether the bridge stays the way to use them.
+  That is the breaking part of the release, and it is not worth guessing at before someone wants
+  per-rule control of a rule that only a group currently enables.
 
 ## 4. `eslint-plugin-style` and stylelint
 
@@ -222,14 +288,18 @@ more than it returns.
    `finally`. Covered by a `fixtures/basic.xyz` regression case.
 1. **`eslint-plugin-markup` gains `languages.html` + `configs.flatLanguage` (minor, additive).**
    `parser` and `flatRecommended` keep working exactly as before.
-2. **`@unts/language-css` (new, internal).** postcss parse + `TextSourceCodeBase` + `traverse()`
+2. **`eslint-plugin-markup` gains one rule per markuplint rule (minor, additive).** `markup/<rule>`
+   is backed by a single pass per file shared by the enabled rules; `markup/markup` stays for
+   consumers that have not moved. Parity with `MLEngine` is tested.
+3. **`@unts/language-css` (new, internal).** postcss parse + `TextSourceCodeBase` + `traverse()`
    and `visitorKeys`, accepted through tests that use the `ESLint` class against `.css` files and
    that do not import stylelint.
-3. **`eslint-plugin-style` 0.x.** The `style/stylelint` bridge (dynamic `import()` of stylelint 17
+4. **`eslint-plugin-style` 0.x.** The `style/stylelint` bridge (dynamic `import()` of stylelint 17
    inside the worker) plus `flat/recommended`. Embedded `<style>` support follows separately,
    with the virtual-filename fix mapping designed first.
-4. **`eslint-plugin-markup` major.** `flatRecommended` switches to `language` and the processor
-   dependency goes away; `@1stg/eslint-config` follows. `htm` and `text` can be migrated the same
+5. **`eslint-plugin-markup` major.** The mapped rules become the only model: `markup/markup`
+   goes away, `flatRecommended` switches to `language` and the processor dependency goes away;
+   `@1stg/eslint-config` follows. `htm` and `text` can be migrated the same
    way - `htm` has no fixes at all, so it is the least valuable and can go last.
 
 Acceptance criteria for every step: `.html`, `.pug` and `.vue` files lint through the `ESLint`

@@ -57,6 +57,9 @@
     "markuplint": "^5.0.0",
     "synckit": "^0.12.0"
   },
+  "devDependencies": {
+    "@markuplint/rules": "^5.1.1"
+  },
   "publishConfig": {
     "access": "public"
   },

@@ -7,6 +7,7 @@ import { html } from './language.js'
 import * as meta from './meta.js'
 import * as parser from './parser.js'
 import * as rules from './rules/index.js'
+import { mappedRules } from './rules-mapped.js'
 
 const languages = { html }
 
@@ -19,10 +20,13 @@ interface PluginWithLanguages extends TSESLint.Linter.Plugin {
   languages: typeof languages
 }
 
+/** The bridge rule plus one rule per markuplint rule, so both models can be adopted. */
+const allRules = { ...rules, ...mappedRules }
+
 const markup: PluginWithLanguages = {
   meta,
   languages,
-  rules,
+  rules: allRules,
 }
 
 const flatBase: TSESLint.FlatConfig.Config = {
@@ -57,12 +61,13 @@ const flatRecommendedLanguage: TSESLint.FlatConfig.Config = {
   rules: configs_.recommended.rules,
 }
 
-export { html, languages, meta, parser, rules }
+export { html, languages, mappedRules, meta, parser, rules }
 export {
   HTML_LANGUAGE_NAME,
   MarkupLanguage,
   MarkupSourceCode,
 } from './language.js'
+export { MARKUPLINT_RULE_NAMES } from './rule-names.js'
 
 export const configs = {
   ...configs_,

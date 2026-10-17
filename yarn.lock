@@ -3764,7 +3764,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@markuplint/rules@npm:5.1.1":
+"@markuplint/rules@npm:5.1.1, @markuplint/rules@npm:^5.1.1":
   version: 5.1.1
   resolution: "@markuplint/rules@npm:5.1.1"
   dependencies:
@@ -8510,6 +8510,7 @@ __metadata:
   dependencies:
     "@eslint/core": "npm:^1.2.1"
     "@eslint/plugin-kit": "npm:^0.7.3"
+    "@markuplint/rules": "npm:^5.1.1"
     "@pkgr/core": "npm:^0.3.0"
     eslint-plugin-utils: "npm:^0.4.0"
     markuplint: "npm:^5.0.0"

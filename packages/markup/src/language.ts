@@ -1,5 +1,19 @@
-import type { File, Language, SourceLocation } from '@eslint/core'
-import { TextSourceCodeBase, VisitNodeStep } from '@eslint/plugin-kit'
+import type { File, FileProblem, Language, SourceLocation } from '@eslint/core'
+import {
+  type Directive,
+  TextSourceCodeBase,
+  VisitNodeStep,
+} from '@eslint/plugin-kit'
+import { parser as htmlParser } from '@markuplint/html-parser'
+import type { MLASTDocument } from '@markuplint/ml-ast'
+
+import { parseDirectives } from './directives.js'
+
+export type {
+  MarkupPosition,
+  MarkupPositionMapper,
+  MarkupSyntaxElement,
+} from './directives.js'
 
 /**
  * The node a markup language file is rooted at.
@@ -36,12 +50,44 @@ export class MarkupSourceCode extends TextSourceCodeBase<{
   SyntaxElementWithLoc: MarkupDocument
   ConfigNode: never
 }> {
+  /**
+   * The document markuplint parsed. It is what directives are read from, and what rule-level
+   * reporting will use once the rules report from nodes rather than from lines.
+   */
+  readonly markuplint: MLASTDocument
+
+  constructor({
+    text,
+    ast,
+    markuplint,
+  }: {
+    text: string
+    ast: MarkupDocument
+    markuplint: MLASTDocument
+  }) {
+    super({ text, ast })
+    this.markuplint = markuplint
+  }
+
   override getParent(): undefined {
     return undefined
   }
 
   override traverse(): Iterable<VisitNodeStep> {
     return [new VisitNodeStep({ target: this.ast, phase: 1, args: [this.ast] })]
+  }
+
+  /**
+   * HTML comments are how a markup file carries `eslint-disable` directives, and
+   * `TextSourceCodeBase` knows nothing about comments, so ESLint has to be handed them.
+   *
+   * @returns the directives this file declares
+   */
+  getDisableDirectives(): {
+    directives: Directive[]
+    problems: FileProblem[]
+  } {
+    return parseDirectives(this.markuplint, this)
   }
 }
 
@@ -95,7 +141,13 @@ export class MarkupLanguage implements Language<{
     file: File,
     { ast }: { ast: MarkupDocument },
   ): MarkupSourceCode {
-    return new MarkupSourceCode({ text: file.body as string, ast })
+    const text = file.body as string
+
+    return new MarkupSourceCode({
+      text,
+      ast,
+      markuplint: htmlParser.parse(text),
+    })
   }
 }
 
