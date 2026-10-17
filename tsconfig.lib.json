@@ -2,6 +2,7 @@
   // used by all files but do not includes paths
   "extends": "@1stg/tsconfig/nodenext",
   "compilerOptions": {
-    "target": "ES2020"
+    "target": "ES2020",
+    "rewriteRelativeImportExtensions": false
   }
 }
